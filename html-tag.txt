@@ -185,6 +185,16 @@ ul이나 ol의 직접자식은 li만 올 수 있다.
 	<a href=“http://youtube.com/c/kimbug”>http://youtube.com/c/kimbug</a>
 </address>
 
+<details>
+    <summary>오늘의 환율</summary>
+    <ul>
+        <li>달러($) : 1,135.90</li>
+        <li>유로(€) : 1,284.08</li>
+        <li>엔(￥) : 1,014.88</li>
+    </ul>
+</details>
+// 사용자가 직접 조작하여 보거나 숨길 수 있는 부가적인 세부사항(additional details)을 명시할 때 사용
+
 <pre></pre> // 포맷전
 // reformatted text
 
