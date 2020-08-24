@@ -1,6 +1,8 @@
-# HTML에서 사용되는 특수문자(Entity)
+# 특수기호(Entity)
 
-## 특수문자 용어 정리
+<br />
+
+## 특수기호 용어 정리
 |Character|English Name|Korean Name|
 |------|-------|------|
 |`|Grave|-|
@@ -15,22 +17,22 @@
 |=|Equals sign|이꼬르|
 |“|Quotation mark|큰 따옴표|
 |‘|Apostrophe|작은 따옴표|
-|:|Colon|땡땡이
-|;|Semicolon|털 달린 땡땡이
-|,|Comma|쉼표
-|.|Period, Dot|	점, 마침표
-|/|Slash|-
-|&#x7c;|Vertical bar|-
-|\|Backslash|-
-|()|Parenthesis|(소)괄호
-|{}|Brace|중괄호
-|[]|Bracket|대괄호
-|<>|Angle Bracket|꺽쇠괄호
+|:|Colon|땡땡이|
+|;|Semicolon|털 달린 땡땡이|
+|,|Comma|쉼표|
+|.|Period, Dot|	점, 마침표|
+|/|Slash|-|
+|&#x7c;|Vertical bar|-|
+|\|Backslash|-|
+|()|Parenthesis|(소)괄호|
+|{}|Brace|중괄호|
+|[]|Bracket|대괄호|
+|<>|Angle Bracket|꺽쇠괄호|
 
 <br />
 
-# HTML Entity List
-자주 쓰이는 특수문자는 아래와 같습니다.
+# HTML에서 사용되는 특수기호
+자주 쓰이는 특수기호는 아래와 같습니다.
 
 |Character|Entity Name|
 |---------|-----------|
@@ -40,7 +42,7 @@
 |`&`|`&amp;`|
 |`"`|`&quot;`|
 
-> [모든 특수문자 보기](https://www.freeformatter.com/html-entities.html)
+> [모든 특수기호 보기](https://www.freeformatter.com/html-entities.html)
 
 <br/>
 
