@@ -23,7 +23,7 @@
 |.|Period, Dot|	점, 마침표|
 |/|Slash|-|
 |&#x7c;|Vertical bar|-|
-|\|Backslash|-|
+|&#92;|Backslash|-|
 |()|Parenthesis|(소)괄호|
 |{}|Brace|중괄호|
 |[]|Bracket|대괄호|
