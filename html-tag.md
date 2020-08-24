@@ -1,4 +1,4 @@
-태그 Syntax
+# 태그 Syntax
 
 <!DOCTYPE html> // html5에 맞게 작성할테니 그에 맞게 랜더링 부탁
 
