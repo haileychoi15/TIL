@@ -10,6 +10,7 @@
 - 새로운 줄에서 시작합니다.
 - 크기를 지정할 수 있습니다.(`width: 100%; height: 0;` 으로 시작)
 - 브라우저에서 기본값은 `width: auto; height: auto;`
+
 - 예) `<div>`, `<h1>`, `<section>`, `<table>`, `<p>` 태그 등
 > [모든 블록 레벨 요소 보기](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements#Elements)
 
