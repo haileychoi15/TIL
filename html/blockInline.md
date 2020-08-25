@@ -10,7 +10,7 @@
 - 새로운 줄에서 시작합니다.
 - 크기를 지정할 수 있습니다.(`width: 100%; height: 0;` 으로 시작)
 - 브라우저에서 기본값은 `width: auto; height: auto;`
-- 예) `<div>`, `<h1>`, `<section>`, `<table>`, `<p>`
+- 예) `<div>`, `<h1>`, `<section>`, `<table>`, `<p>` 태그 등
 > [모든 블록 레벨 요소 보기](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements#Elements)
 
 <br />
@@ -20,9 +20,9 @@
 - 줄의 어느 곳에서나 시작할 수 있습니다.
 - 크기를 지정할 수 없습니다.
 - `margin`/`padding` 속성의 위/아래(`top`/`bottom`) 값을 지정할 수 없습니다. 무조건 0 입니다.
-> 주의 : `padding` 속성의 경우 `bottom` 값을 지정하고 시각적으로 구현할 수도 있습니다. 하지만 외부의 다른 요소와의 거리를 구현하기 위해 사용하지 마십시오. 요소간의 거리를 형성하는 것은 `margin` 속성의 역할일 뿐더러, 인라인 요소의 `padding-bottom` 값은 아래에 위치한 요소와의 거리를 형성하지 못해 요소가 겹치는 문제가 발생합니다.
+    > 주의 : `padding` 속성의 경우 `bottom` 값을 지정하고 시각적으로 구현할 수도 있습니다. 하지만 외부의 다른 요소와의 거리를 구현하기 위해 사용하지 마십시오. 요소간의 거리를 형성하는 것은 `margin` 속성의 역할일 뿐더러, 인라인 요소의 `padding-bottom` 값은 아래에 위치한 요소와의 거리를 형성하지 못해 요소가 겹치는 문제가 발생합니다.
 - 브라우저에서 기본값은 `width: auto; height: auto;`
-- 예) `<span>`, `<a>`, `<img>`, `<data>`, `<u>`
+- 예) `<span>`, `<a>`, `<img>`, `<data>`, `<u>` 태그 등
 > [모든 인라인 요소 보기](https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements#Elements)
 
 <br />
