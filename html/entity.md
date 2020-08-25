@@ -31,7 +31,7 @@
 
 <br />
 
-# HTML에서 사용되는 특수기호
+## HTML에서 사용되는 특수기호
 자주 쓰이는 특수기호는 아래와 같습니다.
 
 |Character|Entity Name|
@@ -47,6 +47,6 @@
 <br/>
 
 ***
-#### _References_
+### _References_
 - [입문자에게 추천하는 HTML, CSS 첫걸음 | HEROPY Tech](https://heropy.blog/2019/04/24/html-css-starter/)
 - [HTML Entity List | FREEFORMATTER.COM](https://www.freeformatter.com/html-entities.html)
