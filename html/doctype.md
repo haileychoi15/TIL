@@ -71,12 +71,34 @@ HTML 문서(웹페이지)에 관한 정보(표시 방식, 제작자(소유자), 
  <meta name="description" content="자기소개 사이트">
 </head>
 ``` 
-각 태그는 자신이 사용할 수 있는 속성과 값이 정해져 있습니다. <meta>에서 사용할 수 있는 속성은 다음과 같습니다.
-- charset
-- http-equiv
-- name
-- content
-> [더 많은 속성과 설명보기](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)
+
+<br />
+
+### `<meta>` 태그 속성들
+각 태그는 자신이 사용할 수 있는 속성과 값이 정해져 있습니다.
+
+#### `charset` 
+- 페이지의 문자 인코딩을 선언합니다.
+- 값은 반드시 대소문자 구분없는 문자열 "`utf-8`"이어야 합니다.
+ 
+#### `content`
+- `http-equiv` 또는 `name` 특성의 값을 담습니다.
+ 
+#### `http-equiv`
+- 프래그마 지시문을 정의합니다.
+- `content-security-policy` 는 현재 페이지의 콘텐츠 정책을 정의할 수 있습니다. 대부분의 콘텐츠 정책은 허용하는 서버 출처와 스크립트 엔드포인트를 지정해 사이트 간 스크립트 공격 방어에 도움을 줍니다.
+- `content-type` 을 지정할 경우, `content` 특성의 값은 반드시 "`text/html; charset=utf-8`"이어야 합니다.
+- `default-style` 는 기본 CSS 스타일 시트 세트의 이름을 지정합니다.
+- `x-ua-compatible` 을 지정할 경우, `content` 특성의 값은 반드시 "`IE=edge`"여야 합니다. 사용자 에이전트는 이 프래그마를 무시해야 합니다.
+- `refresh` 는 다음을 지정합니다.
+    - `content` 특성에 양의 정수 값을 설정한 경우, 페이지를 다시 불러오기 전까지의 초 단위 대기시간.
+    - `content` 특성이 양의 정수 값을 가지고 그 뒤를 문자열 `;url=`과 유효한 URL이 뒤따른다면, 해당 URL로 이동하기 전까지의 초 단위 대기시간.
+        > 접근성 고려사항 주의 : refresh 값을 지정한 페이지의 경우 새로고침 사이 간격이 너무 짧을 우려가 있습니다. 스크린리더를 이용하는 사용자는 자동 새로고침 이전에 페이지의 내용을 읽고 이해하지 못할 수 있습니다. 또한 저시력 사용자에게 갑작스럽고 사전 안내도 없는 콘텐츠 업데이트는 어지러울 수 있습니다. 
+
+#### `name`
+- `name`과 `content` 특성을 함께 사용하면 문서의 메타데이터를 이름-값 쌍으로 제공할 수 있습니다. 
+- `name`은 이름, `content`는 값을 담당합니다.
+> [표준 메타데이터 이름](https://developer.mozilla.org/ko/docs/Web/HTML/Element/meta/name) 문서에서 HTML 명세에 포함된 표준 메타데이터 목록을 살펴보세요.
 
 <br />
 
@@ -89,5 +111,6 @@ HTML 문서(웹페이지)에 관한 정보(표시 방식, 제작자(소유자), 
 
 ***
 ### _References_
-- [입문자에게 추천하는 HTML, CSS 첫걸음 | HEROPY Tech](https://heropy.blog/2019/04/24/html-css-starter/)
+- [&lt;meta&gt;: 문서 레벨 메타데이터 요소 | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)
 - [What’s in the head? Metadata in HTML | MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML)
+- [입문자에게 추천하는 HTML, CSS 첫걸음 | HEROPY Tech](https://heropy.blog/2019/04/24/html-css-starter/)
