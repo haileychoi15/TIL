@@ -16,9 +16,9 @@ DOCTYPE(DTD, Document Type Definition)은 마크업 언어에서 문서 형식�
 
 <br/>
 
-## `<html>` 태그
-`<html>` 태그는 HTML 문서의 전체 범위를 지정합니다. 웹 브라우저가 해석해야 하는 HTML 문서가 어디에서 시작하며, 어디에서 끝나는지 알려주는 역할을 합니다.
-`<html>` 태그 밖에 있는 내용은 문서의 범위에 해당하지 않으므로 웹 브라우저가 렌더링하지 않습니다.
+## `<html>` 요소
+`<html>` 요소는 HTML 문서의 전체 범위를 지정합니다. 웹 브라우저가 해석해야 하는 HTML 문서가 어디에서 시작하며, 어디에서 끝나는지 알려주는 역할을 합니다.
+`<html>` 요소 밖에 있는 내용은 문서의 범위에 해당하지 않으므로 웹 브라우저가 렌더링하지 않습니다.
 
 ### lang 속성
 문서의 주요 언어를 설정합니다. 
@@ -30,8 +30,8 @@ DOCTYPE(DTD, Document Type Definition)은 마크업 언어에서 문서 형식�
 
 <br />
 
-## `<head>` 태그
-`<head>` 태그 안에서 사용하는 태그들은 HTML 문서의 정보를 가지고 있습니다.
+## `<head>` 요소
+`<head>` 요소 안에서 사용하는 요소들은 HTML 문서의 정보를 가지고 있습니다.
 ```
 <!DOCTYPE html>
 <html>
@@ -40,7 +40,7 @@ DOCTYPE(DTD, Document Type Definition)은 마크업 언어에서 문서 형식�
 	</head>
 </html>
 ```
-아래의 태그들은 `<head>` 태그 내에서 문서에 대한 정보, 외부 리소스 연결, CSS, 기준 URL을 작성할 때 사용합니다.
+아래의 요소들은 `<head>` 요소 내에서 문서에 대한 정보, 외부 리소스 연결, CSS, 기준 URL을 작성할 때 사용합니다.
 - `<title>`
 - `<meta>`
 - `<link>`
@@ -49,7 +49,47 @@ DOCTYPE(DTD, Document Type Definition)은 마크업 언어에서 문서 형식�
 
 <br />
 
-## `<title>` 태그
+### `<link>` 요소
+ `<link>` 요소는 현재 문서와 외부 리소스의 관계를 명시합니다.  `rel` 특성은 관계(relationship)를 뜻하며, 현재 문서와 연결한 아이템의 관계가 어떻게 되는지 설명합니다.
+
+- 외부 스타일 시트를 연결하려면 `<head>` 안에 다음과 같은 `<link>` 요소를 배치하세요.
+
+    ```
+    <link href="main.css" rel="stylesheet">
+  ```
+- 사이트의 파비콘을 연결하려면 다음과 같이 사용합니다.
+
+    ```
+    <link rel="icon" href="favicon.ico">
+  ```
+> `rel` 의 다양한 값과 `<link>` 요소의 다른 특성들을 [여기](https://developer.mozilla.org/ko/docs/Web/HTML/Element/link) 에서 살펴보세요.
+ 
+ <br />
+ 
+### `<style>` 요소
+`<style>` 요소는 문서의 `<head>` 안에 위치해야 합니다. 그러나, 일반적으로 스타일은 외부 스타일 시트에 작성하고, `<link>` 요소로 연결하는 편이 좋습니다. <br />
+문서가 다수의 `<style>`과 `<link>` 요소를 포함하면 서로의 순서대로 DOM에 스타일을 적용합니다. 따라서 예상치 못한 종속 문제를 피하려면 올바른 순서를 따라 `<style>` 및 `<link>` 요소를 배치해야 합니다.
+
+#### MIME 타입
+MIME 타입이란 클라이언트에게 전송된 문서의 다양성을 알려주기 위한 메커니즘입니다. 브라우저들은 리소스를 내려받았을 때 해야 할 기본 동작이 무엇인지를 결정하기 위해 대게 MIME 타입을 사용합니다. MIME 타입은 대소문자를 구분하지는 않지만 전통적으로 소문자로 쓰여집니다.
+
+- text/plain
+- text/html
+- image/jpeg
+> [MIME 타입의 구조](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/MIME_types)를 살펴보세요.
+
+<br />
+
+### `<base>` 요소
+HTML `<base>` 요소는 문서 안의 모든 상대 URL이 사용할 기준 URL을 지정합니다. 문서에는 하나의 `<base>` 요소만 존재할 수 있습니다.
+
+```
+<base href="http://www.example.com/page.html">
+```
+
+
+
+## `<title>` 요소
 HTML 문서의 제목을 정의합니다.
 웹 브라우저의 각 사이트 탭에서 이름으로 표시됩니다.
 ```
@@ -60,10 +100,10 @@ HTML 문서의 제목을 정의합니다.
 
 <br />
 
-## `<meta>` 태그
+## `<meta>` 요소
 `<meta>` 요소는 `<base>`, `<link>`, `<script>`, `<style>`, `<title>`과 같은 다른 메타관련 요소로 나타낼 수 없는 메타데이터를 나타냅니다.
 HTML 문서(웹페이지)에 관한 정보(표시 방식, 제작자(소유자), 내용, 키워드 등)를 검색엔진이나 브라우저에 제공합니다.
-빈(Empty) 태그입니다.
+빈(Empty) 요소입니다.
 ```
 <head>
  <meta charset="UTF-8">
@@ -74,8 +114,8 @@ HTML 문서(웹페이지)에 관한 정보(표시 방식, 제작자(소유자), 
 
 <br />
 
-### `<meta>` 태그 속성들
-각 태그는 자신이 사용할 수 있는 속성과 값이 정해져 있습니다.
+### `<meta>` 요소 속성들
+각 요소는 자신이 사용할 수 있는 속성과 값이 정해져 있습니다.
 
 #### `charset` 
 - 페이지의 문자 인코딩을 선언합니다.
@@ -112,5 +152,9 @@ HTML 문서(웹페이지)에 관한 정보(표시 방식, 제작자(소유자), 
 ***
 ### _References_
 - [&lt;meta&gt;: 문서 레벨 메타데이터 요소 | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)
+- [&lt;link&gt;: 외부 리소스 연결 요소 | MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/link)
+- [&lt;style&gt;: 스타일 정보 요소 | MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)
+- [&lt;base&gt; | MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/base)
 - [What’s in the head? Metadata in HTML | MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML)
+- [MIME 타입 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
 - [입문자에게 추천하는 HTML, CSS 첫걸음 | HEROPY Tech](https://heropy.blog/2019/04/24/html-css-starter/)
