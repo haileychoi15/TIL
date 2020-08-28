@@ -512,22 +512,279 @@ hr {
 <br />
 
 ## `<a>`
-다른 페이지나 같은 페이지의 어느 위치, 파일, 이메일 주소와 그 외 다른 URL로 연결할 수 있는 하이퍼링크를 만듭니다. 
+다른 페이지나 같은 페이지의 어느 위치(`#id`), 파일, 이메일 주소와 그 외 다른 URL로 연결할 수 있는 하이퍼링크를 만듭니다. 
 > Anchor
 
 - `href` 특성을 통해 다른 URL로 이동할 수 있습니다.
 - `<a>` 안의 콘텐츠는 링크 목적지의 설명을 나타내야 합니다.
 
-### `<a>`요소의 특성
-- `download` : 링크로 이동하는 대신 사용자에게 URL을 저장할지 물어봅니다. 값을 지정하면 저장할 때의 파일 이름으로서 제안합니다. `/`와 `\` 문자는 `_`로 변환합니다. 값이 없으면 파일 이름과 확장자는 브라우저가 다양한 인자로부터 생성해 제안합니다.(Content-Disposition HTTP 헤더, URL 경로의 마지막 조각, 미디어 유형)
+<br />
 
-    > `download`는 동일 출처 URL과 `blob:`, `data:` 스킴에서만 작동합니다.
+### `<a>`요소의 특성
+- `download` : 링크로 이동하는 대신 사용자에게 URL을 저장할지 물어봅니다. 값을 지정하면 저장할 때의 파일 이름으로서 제안합니다. `/`와 `\` 문자는 `_`로 변환합니다. 값이 없으면 파일 이름과 확장자는 브라우저가 다양한 인자로부터 생성해 제안합니다.
+    > `download`는 [동일 출처 URL](https://developer.mozilla.org/ko/docs/Web/Security/Same-origin_policy) 과 `blob:`, `data:` 스킴에서만 작동합니다.
                                                                                                                                                
 - `href` : 하이퍼링크가 가리키는 URL. 링크는 HTTP 기반 URL일 필요는 없고, 브라우저가 지원하는 모든 URL 스킴을 사용할 수 있습니다.
-- `hreflang`
-- `ping`
-- `rel`
-- `target`
+    - `tel:` URL을 사용하는 전화번호
+    - `mailto:` URL을 사용하는 이메일 주소
+- `ping` : 브라우저가 URL 각각에 POST 요청을 전송합니다. 대개 추적 용도로 사용합니다.
+- `rel` : 연결한 URL과의 관계를 나타내는 [링크 유형](https://developer.mozilla.org/ko/docs/Web/HTML/Link_types) 목록입니다.
+- `target` : 링크한 URL을 표시할 위치를 나타냅니다. 탭, 창, `<iframe>`의 이름이나 의미를 가지는 특정 키워드입니다.
+
+    - `_self` : 현재 탭/창(기본값)
+    - `_blank` : 새 탭/창
+    - `_parent` : 현재 탭/창의 부모
+    
+        > 부모가 존재하지 않으면 `_self`와 동일하게 행동합니다.
+                                      >
+    - `_top` : 최상단 탭/창
+    
+        > 부모가 존재하지 않으면 `_self`와 동일하게 행동합니다.
+
+<br />
+
+### 보안 취약성
+`target` 특성을 사용할 때, `rel="noreferrer"`를 추가해 `window.opener` API의 악의적인 사용을 방지하는걸 고려하세요.
+> [Target="_blank" - the most underestimated vulnerability ever](https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/)
+
+<br />
+
+## `<abbr>`
+약어를 나타냅니다. 선택 속성인 `title`을 사용하면 준말의 전체 뜻이나 설명을 제공할 수 있습니다.
+> Abbreviation
+
+- `title` 속성 값은 전체 설명만을 작성하며, 다른건 포함할 수 없습니다.
+- `title` 속성은 약어에 대한 설명/확장 형태를 사람이 읽을 수 있는 형태로 나타내야 합니다.
+- 브라우저는 `title`의 값을 보통 마우스 커서를 올렸을 때 나타나는 툴팁(Tooltip)으로 보여줍니다.
+- 설명 없이 단순히 해당 글자가 준말임을 나타내기만 하려면 `<abbr>` 태그를 속성 없이 사용하세요.
+- `<abbr>`을 `<dfn>`과 같이 사용하면 준말이나 머리글자를 그 정의와 연결할 수 있습니다. 
+
+<br />
+
+### Styling
+```
+abbr {
+	font-variant: all-small-caps;
+}
+```
+
+<br />
+
+예제
+```
+<abbr title="Cascading Style Sheets">CSS</abbr>
+```
+
+<br />
+
+## `<b>`
+독자의 주의를 끌기 위해 사용합니다.
+> Bring Attention
+
+- 다른 태그가 적합하지 않은 경우 마지막 수단으로 사용하며 특별한 의미를 가지지 않습니다.
+- 기본적으로 글자가 두껍게(Bold) 표시됩니다.
+
+<br />
+
+## `<mark>`
+맥락 내에서 사용자의 관심을 끌기 위해 하이라이트 효과를 줄 때 사용합니다.
+
+- 기본적으로 형광펜을 사용한 것처럼 글자 배경이 노란색(Yellow)으로 표시됩니다.
+- 인용문(`<q>`, `<blockquote>`)에서 주시해야 할 필요가 있는 부분을 표시합니다.
+- 다른 경우, `<mark>`는 사용자와 관련하여 사용자가 검색한 현재 검색 키워드를 강조 표시할 때 사용할 수 있습니다.
+
+> `<mark>`와 `<strong>` 요소의 차이점을 기억하세요. 텍스트에서, `<mark>`는 연관성을 가진 부분을, `<strong>`은 중요도를 가진 부분을 나타낼 때 사용합니다.
+
+<br />
+
+### 접근성 고려사항
+대부분의 스크린 리더는 기본값에서 `<mark>` 요소의 존재를 표현하지 않습니다. 그러나 CSS content 속성과 ::before, ::after 의사 요소를 사용하면 소리내어 읽도록 할 수 있습니다.
+```
+mark::before, 
+mark::after {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+mark::before {
+  content: " [강조 시작] ";
+}
+
+mark::after {
+  content: " [강조 끝] ";
+}
+```
+
+> 일부 사용자에게는 지나치게 자세한 안내를 유발할 수 있으므로 이 방식을 남용해서는 안됩니다. 콘텐츠의 이해에 강조표시의 유무가 꼭 필요할 때만 사용해야 합니다.
+
+<br />
+
+## `<em>`
+단순한 의미 강조를 표시합니다. 
+> Emphasis
+
+> `<em>`은 콘텐츠를 강조하지만, `<i>`는 외국어, 등장인물의 생각 등 일반적인 산문에서 벗어난 경우 사용합니다.
+
+- 중첩될수록 강조 의미가 강해집니다.
+- 스크린 리더에서 구두 강조로 발음됩니다.
+- 기본적으로 이탤릭체(Italic type)로 표시됩니다.
+
+<br />
+
+## `<strong>`
+중대하거나 긴급한 콘텐츠를 나타냅니다.
+> Strong importance
+
+<br />
+
+예제
+```
+<p>Before proceeding, <strong>make sure you put on your safety goggles</strong>.</p>
+```
+
+<br />
+
+## `<i>`
+텍스트에서 어떤 이유로 주위와 구분해야 하는 부분, 주변과 톤이 다른 부분에 사용합니다. (기술 용어, 외국어 구절, 등장인물의 생각, 아이콘 등)
+
+- 기울임꼴(italic)로 표시됩니다.
+- 강조하려는 텍스트가 다른 요소에 더 적합하지 않은지 고려하세요.
+    - `<em>` 태그는 강세를 나타냅니다.
+    - `<strong>` 태그는 보다 강한 강조를 나타냅니다.
+    - `<mark>` 태그는 관련성을 나타냅니다.
+    - `<cite>` 태그는 책, 공연, 음악 등 저작물의 이름을 나타냅니다.
+    - `<dfn>` 태그는 정의 대상인 용어를 나타냅니다.
+
+<br />
+
+## `<dfn>`
+정의하고 있는 용어를 나타냅니다. `<dfn>`에서 가장 가까운 `<p>`, `<dt>`/`<dd>` 쌍, `<section>` 조상 요소를 용어 정의로 간주합니다.
+
+- `<dfn>` 요소가 `title` 특성을 가지고 있으면 그 값을 현재 정의 중인 용어로 간주합니다. 
+- `<dfn>`이 자식으로 `title` 특성을 가진`<abbr>`을 가지는 경우, 자식 `<abbr>`의 `title` 특성 값을 현재 용어로 간주합니다.
+- `<dfn>` 요소에 `id` 특성을 지정하면 `<a>` 요소로 `<dfn>`을 가리킬 수 있습니다.
+
+<br />
+
+예제
+```
+<p>The <strong>HTML Definition element</strong>
+(<strong><dfn id="definition-dfn">&lt;dfn&gt;</dfn></strong>) is
+used to indicate the term being defined within the context of a
+definition phrase or sentence.</p>
+
+<p>Because of all of that, we decided to use the
+<code><a href="#definition-dfn">&lt;dfn&gt;</a></code> element for
+this project.</p>
+```
+코드 뒤쪽에서는 `<a>` 태그와 `href` 특성 값 `"#definition-dfn"`으로, 정의를 가리키는 링크를 생성합니다.
+
+<br />
+
+## `<cite>`
+저작물의 출처를 표기할 때 사용하며, 제목을 반드시 포함해야 합니다.
+
+- W3C 명세는 `<cite>` 요소로 저작물의 출처를 표기할 때 저작자도 표기할 수 있음을 명시하고 있습니다. 그러나 정반대로, WHATWG 명세는 사람 이름을 어떤 상황에서도 절대 포함하지 말아야 한다고 적혀있다는 점을 알아두는 것이 좋습니다.
+
+<br />
+
+## `<q>`
+짦은 인용문
+> Quotation
+
+- `<q>`는 줄 바꿈이 없는 짧은 경우에 적합합니다. 긴 인용문은 `<blockquote>` 요소를 사용하세요.
+- 인용문의 출처 문서나 메시지를 가리키는 URL을 사용하기 위해 `cite` 특성을 이용할 수 있습니다.
+
+<br />
+
+## `<u>`
+HTML 5에서 `<u>` 요소는 텍스트가 일종의 문자가 아닌 주석(Non-textual annotation)을 가지고 있음을 나타냅니다. 철자 오류 강조, 중국어의 고유 명사 표시 등에 주로 쓰입니다.
+> Unarticulated Annotation
+
+- `<u>`를 사용해 밑줄만 추가하거나, 책 제목 등을 강조해서는 안됩니다.
+
+    > 아무런 의미를 나타내지 않고 밑줄만 추가할 경우 `<span>` 요소를 사용하고, `text-decoration` 속성의 값은 `underline`으로 지정하세요.
+
+<br />
+
+예제
+
+```
+<p>맞춤법을 틀리면 <u class="spelling">않돼요</u>.</p>
+```
+
+<br />
+
+## `<code>`
+짧은 코드 조각을 나타냅니다.
+
+- 여러 줄의 코드를 나타내려면 `<code>` 요소를 `<pre>`로 감싸세요. 보통 상황에서 `<code>`는 코드 한 줄만 나타냅니다.
+```
+<p>The <code>push()</code> method adds one or more elements to the end of an array and returns the new length of the array.</p>
+```
+
+<br />
+
+## `<kbd>`
+텍스트 입력 장치(키보드)에서 키보드 입력, 음성 입력을 나타냅니다.
+> Keyboard Input
+
+- `<kbd>` 요소를 다른 `<kbd>` 요소 안에 배치해, 하나의 입력 안의 작은 부분이나, 실제 타이핑 키를 하나씩 나타낼 수 있습니다.
+
+```
+<p>Please press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to re-render an MDN page.</p>
+```
+
+<br />
+
+## `<sup>`/`<sub>`
+위 첨자(`<sup>`)와 아래 첨자(`<sub>`)를 표시할 때 사용합니다.
+> Superscripted text, Subscripted text
+
+- `<sup>`/`<sub>` 요소는 기존의 관례나 표준이 아래 첨자로 나타내는 경우(타이포그래피)에만 써야 하며, 단순히 작은 글자를 아래로 올려야 할 때는 사용해서는 안됩니다.
+
+    > 단순히 글씨 기준선을 올리거나 내려야 한다면 CSS `vertical-align: super`/`vertical-align: sub`를 사용할 수 있습니다. 기준선을 25% 내려야 한다면 `vertical-align: -25%`로 씁니다. 
+
+```
+X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
+```
+
+<br />
+
+## `<time>`
+시간의 특정 지점 또는 구간을 나타냅니다. `datetime` 속성을 지정하면 적절한 검색 결과, 알림 같은 특정 기능을 구현할 때 사용할 수 있습니다.
+
+- `datetime` 특성이 없는 경우 어떠한 자식 요소도 두어서는 안되며, 요소의 텍스트 콘텐츠를 `datetime` 특성 값으로 간주합니다.
+
+```
+<time datetime="2018-07-07">July 7</time>
+
+<time datetime="20:00">20:00</time>
+
+<time datetime="PT2H30M">2h 30m</time>
+```
+> [유효한 datetime 값](https://developer.mozilla.org/ko/docs/Web/HTML/Element/time) 을 확인하세요.
+
+<br />
+
+## `<span>`
+본질적으로는 아무것도 나타내지 않습니다. 주로 스타일을 적용하기 위해 사용합니다.
+
+<br />
+
+## `<br />`
+텍스트 안에 줄바꿈(캐리지 리턴)을 생성합니다. (주소나 시조 등 줄의 구분)
+
+- 문단 사이에 여백을 두기 위한 용도로 `<br />`을 사용하지 마세요.
+- `<br />` 요소에 CSS `margin`을 적용하면 줄 간격을 늘릴 수 있겠지만 좋은 방법은 아닙니다. 줄 간격은 `line-height` 속성을 사용하세요.
+- 웹 접근성을 위해서는 `<br />` 대신 `<p>` 요소와 함께 CSS `margin` 속성 등을 조합해 간격을 조절하세요.
+
+<br />
 
 ***
 ### _References_
