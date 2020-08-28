@@ -363,6 +363,8 @@
 </dl>
 ```
 
+<br />
+
 ### 웹 접근성 고려
 일부 스크린 리더는 `<dl>`의 콘텐츠를 리스트로 표현하지 않습니다. 따라서, 각 아이템의 콘텐츠는 리스트 그룹 내 다른 항목과의 관계를 표현할 수 있는 방식으로 작성해야 합니다. <br /><br />
 웹 접근성을 고려하여 `<ul>`과 `<dfn>` 태그를 사용할 수 있겠네요.
@@ -488,6 +490,8 @@ hr {
 - 인용문의 들여쓰기를 바꾸려면 CSS `margin-left`와 `margin-right`를 사용하세요.
 - 별도의 블록을 쓰지 않아도 될 짧은 인용문은 `<q>` 요소를 사용하세요.
 
+<br />
+
  속성|의미|값
  ---|---|---
  cite|인용문의 맥락 혹은 출처 정보를 가리키는 URL|URL
@@ -507,7 +511,25 @@ hr {
 
 <br />
 
+## `<a>`
+다른 페이지나 같은 페이지의 어느 위치, 파일, 이메일 주소와 그 외 다른 URL로 연결할 수 있는 하이퍼링크를 만듭니다. 
+> Anchor
+
+- `href` 특성을 통해 다른 URL로 이동할 수 있습니다.
+- `<a>` 안의 콘텐츠는 링크 목적지의 설명을 나타내야 합니다.
+
+### `<a>`요소의 특성
+- `download` : 링크로 이동하는 대신 사용자에게 URL을 저장할지 물어봅니다. 값을 지정하면 저장할 때의 파일 이름으로서 제안합니다. `/`와 `\` 문자는 `_`로 변환합니다. 값이 없으면 파일 이름과 확장자는 브라우저가 다양한 인자로부터 생성해 제안합니다.(Content-Disposition HTTP 헤더, URL 경로의 마지막 조각, 미디어 유형)
+
+    > `download`는 동일 출처 URL과 `blob:`, `data:` 스킴에서만 작동합니다.
+                                                                                                                                               
+- `href` : 하이퍼링크가 가리키는 URL. 링크는 HTTP 기반 URL일 필요는 없고, 브라우저가 지원하는 모든 URL 스킴을 사용할 수 있습니다.
+- `hreflang`
+- `ping`
+- `rel`
+- `target`
 
 ***
 ### _References_
 - [HTML elements reference | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- [한눈에 보는 HTML 요소(Elements & Attributes) 총정리 | HEROPY Tech](https://heropy.blog/2019/05/26/html-elements/)
