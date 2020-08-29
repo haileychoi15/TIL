@@ -282,7 +282,7 @@
 
 <br />
 
-### `<ul>` 요소의 속성
+### 속성
 - `type` : 넘버링 타입 ()
 
     - `a` : lowercase letters
@@ -313,7 +313,7 @@
 
 <br />
 
-### `<li>` 요소의 속성
+### 속성
 
 - `value` : `<ol>` 요소 내부에서 이 값에서부터 번호를 매깁니다. 숫자만 넣을수 있습니다. 
 
@@ -508,7 +508,7 @@ hr {
 
 <br />
 
-### `<a>`요소의 속성
+### 속성
 - `download` : 링크로 이동하는 대신 사용자에게 URL을 저장할지 물어봅니다. 값을 지정하면 저장할 때의 파일 이름으로서 제안합니다. `/`와 `\` 문자는 `_`로 변환합니다. 값이 없으면 파일 이름과 확장자는 브라우저가 다양한 인자로부터 생성해 제안합니다.
     > `download`는 [동일 출처 URL](https://developer.mozilla.org/ko/docs/Web/Security/Same-origin_policy) 과 `blob:`, `data:` 스킴에서만 작동합니다.
                                                                                                                                                
@@ -844,7 +844,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 ```
 <br />
 
-### `<audio>` 요소의 속성
+### 속성
 
 - `autoplay` : 전체 오디오 파일의 다운로드를 기다리지 않고 바로 재생 (Boolean)	
     > [자동 재생 안내서](https://developer.mozilla.org/ko/docs/Web/Media/Autoplay_guide)를 확인하고 필요한 경우에만 `autoplay` 속성을 사용하세요.
@@ -866,7 +866,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 
 <br />
 
-### `<video>` 요소의 속성
+### 속성
 - `autoplay` : 전체 오디오 파일의 다운로드를 기다리지 않고 바로 재생 (Boolean)	
 - `controls` : 제어 메뉴를 표시	(Boolean)	
 - `loop` : 재생이 끝나면 다시 처음부터 재생	(Boolean)	
@@ -930,7 +930,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 
 <br />
 
-### `<map>`의 속성
+### 속성
 - `name` 이미지 맵의 이름, 문서의 다른 부분에서 해당 맵을 참조할 때 해쉬(`#`)를 붙여 사용
     - 반드시 존재해야 합니다.
     - 값이 비면 안됩니다.
@@ -980,7 +980,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 
 <br />
 
-### `<iframe>` 속성
+### 속성
 
 - `name` : 프레임의 이름, 이 이름을 사용해서 다른 요소(`<a>`, `<form>`, `<base>`)나 웹 API(`window.open()`)에서 해당 프레임을 타겟팅 할 수 있습니다.
 - `allowfullscreen` :  전체 화면 모드 사용 여부 (Boolean)
@@ -1014,7 +1014,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 
 <br />
 
-### `<object>` 속성
+### 속성
 - `data` : 리소스 URL
 - `type` : 리소스 포맷/타입
 - `form` : 문서 내 `<form>` 태그의 `id` 값을 이 속성 값으로 지정하면, 해당 폼과 외부 리소스를 연결
@@ -1052,6 +1052,8 @@ ctx.fillStyle = 'green';
 ctx.fillRect(10, 10, 100, 100);
 ```
 JavaScript 코드 내에서 `HTMLCanvasElement.getContext()`를 호출해 그리기 맥락을 얻어서 캔버스 위에 그립니다.
+
+<br />
 
 ### 웹 접근성 문제
 `<canvas>` 요소 자체는 비트맵에 불과하며 어떠한 정보도 제공하지 않습니다. 대체 컨텐츠 이외에 캔버스 접근성을 높이는 사용법을 알아보세요.
