@@ -1086,6 +1086,49 @@ JavaScript 코드 내에서 `HTMLCanvasElement.getContext()`를 호출해 그리
 
 <br /><br />
 
+## `<del>`/`<ins>`
+문서에서 제거된 텍스트의 범위(`<del>`), 문서에 추가된 텍스트의 범위(`<ins>`)를 나타냅니다. 문서나 소스 코드의 변경점 추적 등에 사용할 수 있습니다.
+
+```html
+<blockquote>
+    There is <del>nothing</del> <ins>no code</ins> either good or bad, but <del>thinking</del> <ins>running it</ins> makes it so.
+</blockquote>
+```
+
+<br />
+
+### 속성
+- `cite` : 회의록, 이슈 추적 시스템의 티켓 번호 등 변경점을 설명하는 리소스의 URI
+- `datetime` : 변경이 발생한 일시
+    - [유효한 날짜 문자열](https://developer.mozilla.org/ko/docs/Web/HTML/Date_and_time_formats) 로 표현해야 합니다.
+
+### 접근성 고려사항
+대부분의 스크린 리더는 기본값에서 `<del>`/`<ins>` 요소의 존재를 표현하지 않습니다. CSS `content` 속성과 `::before`, `::after` 의사 요소를 사용하면 소리내어 읽도록 할 수 있습니다.
+그러나 일부 스크린 리더 사용자에게 지나치게 자세한 안내를 유발 할 수 있기 때문에, 콘텐츠의 이해에 삭제 여부가 꼭 필요할 때만 사용해야 합니다.
+
+```html
+del::before, 
+del::after {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+del::before {
+  content: " [제거 부분 시작] ";
+}
+
+del::after {
+  content: " [제거 부분 끝] ";
+}
+```
+
+<br /><br />
+
 ## `<table>`
 행과 열로 이루어진 표를 나타냅니다.
 
@@ -1212,6 +1255,305 @@ JavaScript 코드 내에서 `HTMLCanvasElement.getContext()`를 호출해 그리
     - `1` : (기본값)
 
 <br /><br />
+
+## `<form>`
+웹 서버에 정보를 제출하기 위한 양식 범위를 정의합니다. 
+
+<br />
+
+### 속성
+양식의 고유한 이름은 `id`를 사용하세요. `name` 속성은 HTML4부터 사용하지 않습니다.
+
+- `action` : 전송한 정보를 처리할 웹페이지의 URL
+- `autocomplete` : 사용자가 이전에 입력한 값으로 자동 완성 기능을 사용할 것인지 여부
+    - `on` : 사용 (기본값)
+    - `off` : 미사용
+- `method` : 서버로 전송할 HTTP 방식
+    - `get` : (기본값)
+    - `post`
+    - `dialog` : `<form>`이 `<dialog>` 요소 안에 위치한 경우, 제출과 함께 대화 상자를 닫습니다.
+- `enctype` : `method` 속성이 `post`인 경우, 양식 제출 시 데이터의 [MIME 유형](https://ko.wikipedia.org/wiki/%EB%AF%B8%EB%94%94%EC%96%B4_%ED%83%80%EC%9E%85) 을 나타냅니다. 
+    - `application/x-www-form-urlencoded` : (기본값)
+    - `multipart/form-data` : `<input type="file">`이 존재하는 경우 사용하세요.
+    - `text/plain` : HTML 5에서 디버깅 용으로 추가된 값	
+- `novalidate` : 서버로 전송시 양식 데이터의 유효성을 검사하지 않도록 지정		
+- `target` : 서버로 전송 후 응답받을 방식을 지정
+
+<br /><br />
+
+## `<input />`
+사용자의 데이터를 받을 수 있는 대화형 컨트롤을 생성합니다.
+`<input />` 요소는 [여기](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Input)에서 확인해주세요.
+
+<br /><br />
+
+## `<label>`
+사용자 인터페이스 항목의 설명을 나타냅니다.
+
+- 라벨 가능 요소는 `<button>`, `<input>`, `<progress>`, `<select>`, `<textarea>` 입니다.
+- `<label>`의 `form` 속성 값에 동일한 문서의 `<form>` 요소의 `id`를 연결시킬 수 있습니다.
+- `<label>` 요소 내에 포함된 어떤 것을 눌러도 체크박스 체크/해제가 됩니다.
+
+    ```html
+    <label><input type="checkbox" />I agree.</label>
+    ```
+
+- `<label>` 요소 내에 포함된 텍스트를 클릭하면, 해당 요소의 `for` 속성으로 참조된 체크박스가 체크/해제 됩니다.
+
+    ```html
+    <input type="checkbox" id="check-agreement" />
+    <label for="check-agreement">I agree.</label>
+    ```
+    하지만, 되도록 위의 방법을 사용하세요.
+
+<br />
+
+### 접근성 고려사항
+- `<label>` 내에 `<a>` 또는 `<button>`와 같은 인터랙티브 요소를 배치하지 마세요. 사용자가 `label`과 관련된 양식을 입력하기 어렵습니다.
+- `<label>` 내에 제목 요소(`<h1>`-`<h6>`)를 배치하면 많은 종류의 보조 기술을 방해합니다. 제목이 필요한 경우 `<fieldset>` 내에 배치 된 `<legend>` 요소를 사용하세요.
+
+<br /><br />
+
+## `<button>`
+`<button>` 요소는 간단한 표준 버튼 기능이 필요한 곳이라면 양식(form)과 상관없이 문서 어디에나 배치할 수 있습니다. 양식(form) 제출용 버튼이 아니라면 `type` 값을 `button`으로 지정하는걸 잊지 마세요.
+
+<br />
+
+### 속성
+- `type`
+    - `submit` : 양식(form) 제출 (기본값)
+    - `reset`: 모든 컨트롤을 초기값으로 초기화
+    - `button` : 단순 버튼
+- `autofocus` : 페이지가 로드될 때 자동으로 포커스 (Boolean), 문서 내에 고유해야 합니다.
+- `disabled` : 버튼을 비활성화 (Boolean)	
+- `form` : 동일한 문서의 `<form>` 요소의 `id`를 사용해 버튼과 연결할 수 있고, 조상 중 `<form>`이 있더라도 소유자를 재정의할 수 있습니다.
+- `name` : 양식(form) 제출할 때, 버튼의 `value` 속성과 함께 제출합니다.
+- `value` : 버튼의 초기값
+
+<br />
+
+### 접근성 고려사항
+
+- 아이콘만 사용해 기능을 표현하는 버튼은 `<button>` 요소의 기능을 간략히 묘사하는 텍스트를 안에 포함하세요.
+- 텍스트를 숨기고 싶은 경우 이렇게 CSS를 조합해보세요.
+
+    ```css
+     /* Visually hide an element, but leave it available for screen readers */
+    .screen-reader {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+    
+    /* Extends the .screen-reader class to allow the element to be focusable when navigated to via the keyboard */
+    .screen-reader-focusable:active,
+    .screen-reader-focusable:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        white-space: normal;
+        width: auto;
+    }
+    ```
+    ```html
+    <a class="screen-reader screen-reader-focusable" href="#main">Skip to the main content</a>
+    
+    <nav>Navigation elements...</nav>
+    
+    <main id="main">The main content</main>
+    ```
+- 버튼과 같은 대화형 요소는 최소 `44x44`의 CSS 픽셀 크기를 권고합니다.
+- 다수의 버튼을 시각적으로 가까이 배치할 땐 서로를 분리하는 공간을 둬야 합니다. `margin`과 같은 CSS 속성으로 설정하세요.
+
+<br /><br />
+
+## `<textarea>`
+여러 줄의 일반 텍스트 편집 컨트롤을 나타냅니다.
+
+- `<textarea>`는 CSS property `resize`가 가능한 것이 기본값입니다. `resize`가 되지 않도록 바꿀 수 있습니다.
+    ```css
+    textarea {
+      resize: none;
+    }
+    ```
+
+<br />
+
+### 속성
+- `autocomplete` : 사용자가 이전에 입력한 값으로 자동 완성 기능을 사용할 것인지 여부
+    - `on` : 사용 (기본값)
+    - `off` : 미사용
+- `autofocus` : 페이지가 로드될 때 자동으로 포커스 (Boolean), 문서 내에 고유해야 합니다.
+- `disabled` : 양식을 비활성화 (Boolean)	
+    - 속성이 지정되지 않았다면, 이 요소를 포함하는 컨테이닝 요소(예: `<fieldset>`)에게서 값을 상속받습니다.
+    - `disabled` 속성을 가진 컨테이닝 요소가 없다면, 컨트롤은 사용 가능합니다.
+- `form` : 동일한 문서의 `<form>` 요소의 `id`를 사용해 버튼과 연결할 수 있고, 조상 중 `<form>`이 있더라도 소유자를 재정의할 수 있습니다.
+- `name`			
+- `placeholder`			
+- `readonly`		
+- `rows` : 보여지는 컨트롤의 줄의 수
+- `maxlength`/`minlength`
+
+> 더 많은 [속성](https://developer.mozilla.org/ko/docs/Web/HTML/Element/textarea) 을 살펴보세요.
+
+<br />
+
+### 예제
+
+```html
+<label for="story">Tell us your story:</label>
+
+<textarea id="story" name="story"
+          rows="5" cols="33">
+It was a dark and stormy night...
+</textarea>
+```
+
+<br /><br />
+
+## `<fieldset>`/`<legend>`
+같은 목적의 양식을 그룹화(`<fieldset>`)하여 제목(`<legend>`)을 지정합니다.
+
+```html
+<form>
+	<fieldset>
+		<legend>Choose coffee size</legend>
+		<label><input type="radio" name="size" />Small</label><br />
+		<label><input type="radio" name="size" />Big</label><br />
+		<label><input type="radio" name="size" />Super</label>
+	</fieldset>
+</form>
+```
+
+<br />
+
+### `<fieldset>` 속성
+- `disabled` : 지정한 경우, 모든 자손 컨트롤을 비활성화합니다. 단, `<legend>` 안의 양식 요소는 비활성 상태로 전환되지 않습니다.
+- `form` : 동일한 문서의 `<form>` 요소의 `id`를 사용해 버튼과 연결할 수 있습니다.
+- `name` : 그룹과 연관지을 이름, `<fieldset>`에 대한 설명은 자신이 포함한 첫 번째 `<legend>` 요소가 담당합니다.
+
+<br />
+
+### Styling
+- `<fieldset>`은 기본 스타일 값을 가집니다. 예를 들어, 크롬 브라우저에서 `<fieldset>` 요소의 스타일 기본값은 아래와 같습니다.
+
+    ```css
+    fieldset {
+        display: block;
+        min-inline-size: min-content;
+        margin-inline-start: 2px;
+        margin-inline-end: 2px;
+        padding-block-start: 0.35em;
+        padding-inline-start: 0.75em;
+        padding-inline-end: 0.75em;
+        padding-block-end: 0.625em;
+        border-width: 2px;
+        border-style: groove;
+        border-color: threedface;
+        border-image: initial;
+    }
+    ```
+
+    `<fieldset>` 요소를 `display: inline`으로 지정하면 `inline-block`처럼 행동합니다. <br />
+    `<legend>` 요소의 `display` 기본값 역시 `block` 입니다. 그러나, `<legend>` 요소는 `display: inline`으로 지정해도 `block`처럼 동작한다는 점에 주의하세요.
+
+- Microsoft Edge와 Google Chrome에는 `<fieldset>` 내부에서 `flexbox`와 `grid layout`을 사용할 수 없는 버그가 존재합니다.
+
+<br /><br />
+
+## `<select>`
+옵션 메뉴를 제공하는 컨트롤을 나타냅니다.
+
+```html
+<label for="pet-select">Choose a pet:</label>
+<select name="pets" id="pet-select">
+    <option value="">--Please choose an option--</option>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+</select>
+```
+
+<br />
+
+### 속성
+- `autocomplete`
+- `disabled`
+- `autofocus`
+- `form`
+- `multiple` : 다중 선택 여부 (Boolean), 스크롤 가능한 목록 상자를 보여줍니다.		
+- `size` : 한 번에 볼 수 있는 행의 개수
+    - `0` : 1개 처럼 보인다. (기본값)
+
+<br /><br />
+
+## `<datalist>`
+`<input />`에 미리 정의된 옵션을 지정하여 자동완성(Autocomplete) 기능을 제공하는 데 사용합니다.
+
+```html
+<label for="ice-cream-choice">Choose a flavor:</label>
+<input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
+
+<datalist id="ice-cream-flavors">
+    <option value="Chocolate">
+    <option value="Coconut">
+    <option value="Mint">
+    <option value="Strawberry">
+    <option value="Vanilla">
+</datalist>
+```
+
+- `<input />`의 `list` 속성 값과 `<datalist>`의 `id` 값을 일치시켜 연결합니다.
+- `<option>` 요소를 사용하여 자동완성 옵션을 제공합니다.
+
+<br /><br />
+
+## `<option>`/`<optgroup>`
+`<option>`은 `<select>`, `<optgroup>`, `<datalist>` 요소의 항목을 정의합니다. `<optgroup>`는  `<select>` 요소의 옵션을 묶을 수 있습니다.
+
+- 선택적 빈(Empty) 태그로 사용 가능합니다.
+- `<option>`의 `value` 속성 값을 지정하지 않으면 내부 텍스트가 값으로 사용됩니다.
+- `<optgroup>`은 `disabled`와 `label` 속성을 가집니다.
+
+<br />
+
+### `<option>` 속성
+- `disabled`
+- `label` : 옵션의 뜻을 나타내는 텍스트(지정하지 않은 경우, 요소의 텍스트 콘텐츠를 대신 사용)
+- `selected` : `<select>` 요소가 `multiple`를 지정한 경우, 여러 개 설정 가능
+- `value`
+
+<br />
+
+### 예제
+```html
+<select>
+  <optgroup label="Group 1">
+    <option>Option 1.1</option>
+  </optgroup> 
+  <optgroup label="Group 2">
+    <option>Option 2.1</option>
+    <option>Option 2.2</option>
+  </optgroup>
+  <optgroup label="Group 3" disabled>
+    <option>Option 3.1</option>
+    <option>Option 3.2</option>
+    <option>Option 3.3</option>
+  </optgroup>
+</select>
+```
+
+<br /><br />
+
+
 
 ***
 ### _References_
