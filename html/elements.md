@@ -925,7 +925,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 />
 ```
 
-<img src="./assets/map.png" alt="map 요소 예제 이미지" />
+<img src="../assets/map.png" alt="map 요소 예제 이미지" width="100" />
 
 <br />
 
