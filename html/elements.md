@@ -793,7 +793,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 <br /><br />
 
 ## `<ruby>`
-루비 주석을 나타냅니다. 루비 주석은 동아시아 문자의 발음(<img src="../assets/ruby.png" alt="ruby 요소 예제 이미지" width="20" />)을 표기할 때 사용합니다. 
+루비 주석을 나타냅니다. 루비 주석은 동아시아 문자의 발음(<img src="../assets/ruby.png" alt="ruby 요소 예제 이미지" width="30" />)을 표기할 때 사용합니다. 
 
 ```
 <ruby>
@@ -1534,6 +1534,7 @@ It was a dark and stormy night...
 <br />
 
 ### 예제
+
 ```html
 <select>
   <optgroup label="Group 1">
@@ -1550,6 +1551,8 @@ It was a dark and stormy night...
   </optgroup>
 </select>
 ```
+
+<img src="../assets/option.png" alt="option 요소 예제 이미지" width="200">
 
 <br /><br />
 
