@@ -808,18 +808,13 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 <br />
 
 ## `<ruby>`
-루비 주석을 나타냅니다. 루비 주석은 동아시아 문자의 발음을 표기할 때 사용합니다. 
+루비 주석을 나타냅니다. 루비 주석은 동아시아 문자의 발음을 표기할 때 사용합니다. (<img src="../assets/ruby.png" alt="동아시아 문자" style="width:200px; height:auto;"/>)
 
 ```
 <ruby>
 明日 <rp>(</rp><rt>Ashita</rt><rp>)</rp>
 </ruby>
 ```
-
-<img src="../assets/ruby.png" alt="동아시아 문자" />
-
-![동아시아 문자](../assets/ruby.png)
-
 
 
 ***
