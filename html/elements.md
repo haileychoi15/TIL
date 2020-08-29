@@ -102,8 +102,7 @@
 - `<thead>`/`<tbody>`
 - `<th>`/`<tr>`/`<td>`
 - `<caption>`
-- `<col>`
-- `<colgroup>`
+- `<col>`/`<colgroup>`
 
 <br />
 
@@ -119,9 +118,8 @@
 - `<textarea>`
 - `<output>`
 - `<progress>`
-- `<fieldset>`
-- `<legend>`
-- `<meter>`
+- `<fieldset>`/`<legend>`
+- `<meter>` : 특정 범위 내에서의 스칼라 값, 또는 백분율 값을 나타냅니다.
 
 <br />
 
@@ -189,8 +187,8 @@
 독립 적으로 구분해 배포하거나 재사용 할 수 있는 구획을 나타냅니다. 사용 예제로 게시판과 블로그 글, 매거진이나 뉴스 기사 등이 있습니다. 
 
 - 예를 들어, 사용자가 스크롤하면 계속해서 다음 글을 보여주는 블로그의 경우, 각각의 글이 `<article>` 요소가 될 수 있고, 그 안에는 또 여러 개의 `<section>`이 존재할 수 있습니다.
-- 주로 제목 요소(`<h1>` ~ `<h6>`)를 포함하여 각각의 <article>을 식별합니다.
-- `<article>` 요소 안에 <article> 요소를 중첩할 수 있습니다.
+- 주로 제목 요소(`<h1>` ~ `<h6>`)를 포함하여 각각의 `<article>`을 식별합니다.
+- `<article>` 요소 안에 `<article>` 요소를 중첩할 수 있습니다.
 - 작성자 정보를 `<address>` 요소를 이용하여 제공할 수 있습니다. 그러나 중첩 `<article>`에는 적용되지 않습니다.
 - 작성일자와 시간은 `<time>` 요소의 `datetime` 속성을 이용하여 설명할 수 있습니다.
 
@@ -1102,6 +1100,8 @@ JavaScript 코드 내에서 `HTMLCanvasElement.getContext()`를 호출해 그리
 - `datetime` : 변경이 발생한 일시
     - [유효한 날짜 문자열](https://developer.mozilla.org/ko/docs/Web/HTML/Date_and_time_formats) 로 표현해야 합니다.
 
+<br />
+
 ### 접근성 고려사항
 대부분의 스크린 리더는 기본값에서 `<del>`/`<ins>` 요소의 존재를 표현하지 않습니다. CSS `content` 속성과 `::before`, `::after` 의사 요소를 사용하면 소리내어 읽도록 할 수 있습니다.
 그러나 일부 스크린 리더 사용자에게 지나치게 자세한 안내를 유발 할 수 있기 때문에, 콘텐츠의 이해에 삭제 여부가 꼭 필요할 때만 사용해야 합니다.
@@ -1536,25 +1536,103 @@ It was a dark and stormy night...
 ### 예제
 
 ```html
-<select>
-  <optgroup label="Group 1">
-    <option>Option 1.1</option>
-  </optgroup> 
-  <optgroup label="Group 2">
-    <option>Option 2.1</option>
-    <option>Option 2.2</option>
-  </optgroup>
-  <optgroup label="Group 3" disabled>
-    <option>Option 3.1</option>
-    <option>Option 3.2</option>
-    <option>Option 3.3</option>
-  </optgroup>
-</select>
+<form>
+	<select>
+		<optgroup label="Asia">
+			<option value="Seoul">Seoul</option>
+			<option value="Tokyo">Tokyo</option>
+		</optgroup>
+		<optgroup label="Europe">
+			<option value="Barcelona">Barcelona</option>
+			<option value="Paris">Paris</option>
+		</optgroup>
+	</select>
+</form>
 ```
 
 <img src="../assets/option.png" alt="option 요소 예제 이미지" width="200">
 
 <br /><br />
+
+## `<progress>`
+작업의 완료 정도를 나타냅니다.
+
+- 최솟값은 항상 0이며 `min` 속성을 지정할 수 없습니다.
+- inline-block 요소
+
+<br />
+
+### 속성
+- `max` : 지정하지 않으면 1 입니다.
+- `value` : 작업을 완료한 양을 나타냅니다. `value` 특성이 없으면 미결정 상태를 나타냅니다.
+
+    > 이 값은 보통 JS를 사용하여 동적으로 조작합니다.
+
+<br />
+
+### 예제
+아래는 동적 처리의 매우 간단한 예입니다.
+
+```html
+<body>
+	<label> File progress: <progress max="100" value="0"></progress> </label>
+
+	<script>
+		const progress = document.querySelector("progress");
+
+		const interval = setInterval(function () {
+			progress.value += 10;
+			if (progress.value >= 100) clearInterval(interval);
+		}, 1000);
+	</script>
+</body>
+```
+
+<img src="../assets/progress.png" alt="progress 요소 예제 이미지" width="300">
+
+<br /><br />
+
+## `<output>`
+웹 사이트나 앱에서 계산이나 사용자 행동의 결과를 삽입할 수 있는 컨테이너 요소입니다.
+
+- `<output>`의 값, 이름, 콘텐츠는 양식(form) 전송 시 제출되지 않습니다.
+- 많은 브라우저는 `<output>`을 마치 [`aria-live`](https://developers.google.com/web/fundamentals/accessibility/semantics-aria/hiding-and-updating-content?hl=ko) 속성이 존재하는 것처럼 구현합니다.
+따라서, `<output>` 내부의 UI 상호작용 결과를 표현할 것입니다.
+
+<br />
+
+### 속성
+- `for` : 스페이스로 구분한, 다른 여러 요소 `id`의 목록. 목록에 포함된 요소가 출력 결과에 공헌했거나 영향을 주었음을 나타냅니다.
+- `form` : 동일한 문서의 `<form>` 요소의 `id`를 사용해 버튼과 연결할 수 있고, 조상 중 `<form>`이 있더라도 소유자를 재정의할 수 있습니다.
+- `name` : 요소의 이름, [form.elements](https://developer.mozilla.org/ko/docs/Web/API/HTMLFormElement/elements) API에서 사용합니다.
+
+<br /><br />
+
+## `<details>`
+
+<br /><br />
+
+## `<dialog>`
+
+<br /><br />
+
+## `<menu>`
+
+<br /><br />
+
+## `<summary>`
+
+<br /><br />
+
+## `<slot>`
+
+<br /><br />
+
+## `<template>`
+
+<br /><br />
+
+
 
 
 
