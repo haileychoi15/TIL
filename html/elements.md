@@ -77,11 +77,7 @@
 ### Embedded content
 일반적인 멀티미디어 콘텐츠 이외의 콘텐츠를 포함하는 요소입니다.
 - `<iframe>`
-- `<embed>`
 - `<object>`
-- `<param>`
-- `<picture>`
-- `<source>`
 
 <br />
 
@@ -1020,6 +1016,33 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 - `name` : 유효한 새로운 브라우징 맥락이 있다면, 브라우징 맥락의 이름 지정
 - `usemap` : 해쉬이름(`#`)을 사용하여 `<map>` 태그를 연결
 
+<br /><br />
+
+## `<script>`
+Script 코드를 문서에 포함하거나 참조합니다.
+
+- 브라우저가 HTML 문서 분석을 진행하다가 인라인 스크립트 또는 `async`, `defer`, `type="module"` 속성이 없는 `<script>` 태그를 만나면 해당 `<script>` 태그가 참조하는 JS 코드 실행하기 전까지 문서 분석을 중단합니다.
+
+<br />
+
+### 속성
+`async`와 `defer` 속성은 `src` 속성이 필수입니다.
+
+- `async` : 스크립트의 비동기적(Asynchronously) 실행 여부 (Boolean)
+- `defer` : 브라우저가 스크립트를 문서 분석 이후에, 그러나 DOMContentLoaded 발생 이전에 실행할지 지정 (Boolean)
+- `src` : 참조할 외부 스크립트 URL
+- `type` : MIME 타입, text/javascript(기본값)
+
+<br /><br />
+
+## `<noscript>`
+페이지의 스크립트 유형을 지원하지 않거나, 브라우저가 스크립트를 비활성화한 경우 보여줄 HTML 구획을 정의합니다.
+
+```html
+<noscript>
+  <p>Your browser does not support JavaScript!</p>
+</noscript>
+```
 
 <br /><br />
 
