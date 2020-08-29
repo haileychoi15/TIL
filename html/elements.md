@@ -231,6 +231,7 @@
 - `<aside>` 요소는 `<address>`의 자손이 될 수 없습니다.
 
 다음 예제는 글 내의 문단을 `<aside>`로 표시합니다. 해당 문단은 글의 주제와 간접적으로만 연결되어 있습니다.
+
 ```
 <article>
   <p>
@@ -267,6 +268,7 @@
 <br />
 
 예제
+
 ```
 <address>
 	<a href="mailto:imdud0612@gmail.com">imdud0612@gmail.com</a><br />
@@ -768,6 +770,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 
 <time datetime="PT2H30M">2h 30m</time>
 ```
+
 > [유효한 datetime 값](https://developer.mozilla.org/ko/docs/Web/HTML/Element/time) 을 확인하세요.
 
 <br />
