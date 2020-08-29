@@ -1086,6 +1086,132 @@ JavaScript 코드 내에서 `HTMLCanvasElement.getContext()`를 호출해 그리
 
 <br /><br />
 
+## `<table>`
+행과 열로 이루어진 표를 나타냅니다.
+
+- 표의 목적에 대한 명확하고 상세한 설명을 포함하는 `<caption>` 요소를 제공하여 사용자가 표 콘텐츠를 확인할지, 넘어갈지 결정할 때 도움을 줄 수 있습니다.
+
+```html
+<table>
+    <caption>Council budget (in £) 2018</caption>
+    <thead>
+        <tr>
+            <th>Items</th>
+            <th scope="col">Expenditure</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Donuts</th>
+            <td>3,000</td>
+        </tr>
+        <tr>
+            <th scope="row">Stationery</th>
+            <td>18,000</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+```html
+<table>
+    <caption>Superheros and sidekicks</caption>
+    <colgroup>
+        <col>
+        <col span="2" class="batman">
+        <col span="2" class="flash">
+    </colgroup>
+    <tr>
+        <td> </td>
+        <th scope="col">Batman</th>
+        <th scope="col">Robin</th>
+        <th scope="col">The Flash</th>
+        <th scope="col">Kid Flash</th>
+    </tr>
+    <tr>
+        <th scope="row">Skill</th>
+        <td>Smarts</td>
+        <td>Dex, acrobat</td>
+        <td>Super speed</td>
+        <td>Super speed</td>
+    </tr>
+</table>
+```
+
+<br />
+
+### Styling
+`border-collapse`을 이용해 테이블 각 칸의 테두리가 서로 분리되지 않고 공유하도록 지정할 수 있습니다.
+`<thead>`는 CSS의 가상클래스(pseudo-class) `:nth-child` 을 사용하면 열의 칸(cell)들을 정렬하는데 유용합니다.
+
+<br /><br />
+
+## `<caption>`
+표의 설명 또는 제목을 나타냅니다.
+
+- `<caption>` 요소는 부모 `<table>` 요소의 첫 번째 자식이어야 합니다.
+- `<table>` 요소가 만약 `<figure>` 요소의 유일한 자식인 경우, `<figcaption>`을 대신 사용하세요.
+
+<br /><br />
+
+## `<col />`/`<colgroup>`
+`<col />`는 표의 열을 나타내며, 열에 속하는 칸(cell)에 공통된 의미를 부여할 때 사용합니다. `<colgroup>`는 `<col />`를 묶는 그룹을 나타냅니다.
+
+- `span` 속성을 사용하여 차지할 열의 수를 양의 정수로 나타냅니다. (기본값 1)
+- `<colgroup>`은 내부에 `<col>` 요소가 존재 하면 `span` 속성을 사용할 수 없습니다.
+
+<br /><br />
+
+## `<thead>`, `<tbody>`
+표의 머리글(`<thead>`), 본문(`<tbody>`)을 나타냅니다.
+
+- 기본적으로 테이블의 레이아웃에 영향을 주지 않습니다.
+- `<thead>` 요소를 사용한 경우, `<tbody>` 요소는 반드시 그 뒤에 위치해야 합니다.
+- `<thead>`의 닫는 태그는 바로 뒤에 `<tbody>`가 올 경우 생략할 수 있습니다.
+- `<thead>`는 무조건 `<caption>`이나 `<colgroup>` 요소 다음에 위치 해야 하며, `<tbody>`나 `<tr>` 요소 이전에 위치 해야 합니다.
+- 하나의 표에 다수의 `<tbody>`를 연속적으로 사용하여, 커다란 표의 행을 구획으로 나눌 수 있습니다.
+- 브라우저에서 지정된 화면 영역이 표 전체를 보여주기에 충분히 크지 않은 경우, 같은 부모의 `<thead>`/`<tbody>`/`<caption>` 요소를 서로 따로 스크롤 가능토록 설정할 수 있습니다. 
+
+<br /><br />
+
+## `<th>`
+테이블에서 ‘머리글 칸’을 지정합니다.
+> Table Header
+
+- 복잡한 표에서는 `scope` 속성을 통해 범위를 명시하세요. 특정 헤더와 연관된 칸에 대한 정보를 제공할 수 있습니다.
+
+<br />
+
+### 속성
+
+- `abbr` : 열에 대한 간단한 설명
+- `headers` : 관련된 하나 이상의 다른 머리글 칸 `id` 속성 값		
+- `colspan` : 확장하려는(병합) 열의 수, 기본값 1
+- `rowspan` : 확장하려는(병합) 행의 수, 기본값 1
+- `scope` : 자신이 누구의 ‘머리글 칸’인지 명시
+    - `col` : 자신의 열
+    - `colgroup` : 모든 열
+    - `row` : 자신의 행
+    - `rowgroup` : 모든 행
+    - `auto` (기본값) 
+
+<br /><br />
+
+## `<td>`
+데이터를 포함하는 표의 셀을 정의합니다. 테이블의 행을 나타내는 `<tr>` 안에 위치합니다.
+
+<br />
+
+### 속성
+- `headers` : 관련된 하나 이상의 다른 머리글 칸 `id` 속성 값		
+- `colspan`	: 확장하려는(병합) 열의 수
+    - `0` : `<colgroup>`의 크기만큼 확장
+    - `1` : (기본값)
+- `rowspan`	: 확장하려는(병합) 행의 수
+    - `0` : table section(`<thead>`, `<tbody>`)의 크기만큼 확장
+    - `1` : (기본값)
+
+<br /><br />
 
 ***
 ### _References_
