@@ -797,7 +797,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 <br /><br />
 
 ## `<ruby>`
-루비 주석을 나타냅니다. 루비 주석은 동아시아 문자의 발음을 표기할 때 사용합니다. 
+루비 주석을 나타냅니다. 루비 주석은 동아시아 문자의 발음(<img src="../assets/ruby.png" alt="ruby 요소 예제 이미지" width="20" />)을 표기할 때 사용합니다. 
 
 ```
 <ruby>
@@ -925,7 +925,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 />
 ```
 
-<img src="../assets/map.png" alt="map 요소 예제 이미지" width="100" />
+<img src="../assets/map.png" alt="map 요소 예제 이미지" width="200" />
 
 <br />
 
