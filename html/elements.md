@@ -33,11 +33,7 @@
 - `<dl>`/`<dt>`/`<dd>`
 - `<p>`
 - `<hr />`
-
-    > 이야기 장면 전환, 구획 내 주제 변경 등, 문단 레벨 요소에서 주제의 분리를 나타냅니다.
 - `<pre>`
-
-    > 미리 서식을 지정한 텍스트를 나타내며, HTML에 작성한 내용 그대로 표현합니다.
 - `<blockquote>`
 - `<figure>`
 - `<figcaption>`
@@ -76,15 +72,8 @@
 - `<audio>`
 - `<video>`
 - `<map>`
-
-    > 이미지 맵(클릭 가능한 링크 영역)을 정의할 때 사용합니다.
 - `<area>`
-
-    >  이미지의 핫스팟 영역을 정의하고, 하이퍼링크를 추가할 수 있습니다. `<map>` 요소 안에서만 사용할 수 있습니다.
 - `<track>`
-
-    > 미디어 요소(`<audio>`, `<video>`)의 자식으로서, 자막 등 시간별 텍스트 트랙(시간 기반 데이터)를 지정할 때 사용합니다.
-
 <br />
 
 ### Embedded content
@@ -156,8 +145,7 @@
 - `<slot>`
 - `<template>`
 
-<br />
-<br />
+<br /><br />
 
 ## `<h1> - <h6>`
 제목의 정보를 사용해 자동으로 문서 콘텐츠의 표를 만드는 등의 작업을 수행할 수 있습니다. 제목 구획 단계는 `<h1>`이 가장 높고 `<h6>`은 가장 낮습니다.
@@ -166,14 +154,14 @@
 - 제목 단계를 건너뛰는 것을 피하세요. 언제나 `<h1>`로 시작해서 순차적으로 기입하세요.
 - 페이지 당 하나의 `<h1>`만 사용하세요. `<h1>`은 가장 중요한 제목이므로 전체 페이지의 목적을 설명하고 이는 SEO(검색 엔진 최적화)와 연결됩니다.
 
-<br />
+<br /><br />
 
 ## `<header>`
 제목, 로고, 검색 폼, 작성자 이름 등의 요소를 포함할 수 있습니다.
 
 - `<header>` 또는 `<footer>`가 자손으로 올 수 없습니다.
 
-<br />
+<br /><br />
 
 ## `<footer>`
 구획의 작성자, 저작권 정보, 관련 문서 등의 내용을 담습니다.
@@ -183,7 +171,7 @@
 
 > 접근성 고려사항 : [VoiceOver](https://help.apple.com/voiceover/mac/10.15/) 스크린 리더는 랜드마크 로터에서 푸터의 랜드마크 역할을 표현하지 않는 문제가 있습니다. 해결하려면 `<footer>`에 `role="contentinfo"`를 추가하세요.
 
-<br />
+<br /><br />
 
 ## `<main>`
 문서 `<body>`의 주요 콘텐츠를 나타냅니다. 
@@ -201,7 +189,7 @@
 </main>
 ```
 
-<br />
+<br /><br />
 
 ## `<article>`
 독립 적으로 구분해 배포하거나 재사용 할 수 있는 구획을 나타냅니다. 사용 예제로 게시판과 블로그 글, 매거진이나 뉴스 기사 등이 있습니다. 
@@ -212,7 +200,7 @@
 - 작성자 정보를 `<address>` 요소를 이용하여 제공할 수 있습니다. 그러나 중첩 `<article>`에는 적용되지 않습니다.
 - 작성일자와 시간은 `<time>` 요소의 `datetime` 속성을 이용하여 설명할 수 있습니다.
 
-<br />
+<br /><br />
 
 ## `<section>`
 독립적인 구획을 나타내며, 문서 요약에 해당 구획이 논리적으로 나타나야 할 때 사용합니다.
@@ -223,7 +211,7 @@
 - `<section>` 요소는 `<address>`의 자손이 될 수 없습니다.
 - `<section>` 요소를 일반 컨테이너로 사용하지 마세요. 특히 단순한 스타일링이 목적이라면 `<div>` 요소를 사용해야 합니다.
 
-<br />
+<br /><br />
 
 ## `<aside>`
 문서의 주요 내용과 간접적으로만 연관된 부분을 나타냅니다. 주로 사이드바 혹은 콜아웃 박스로 표현합니다.
@@ -246,7 +234,7 @@
 </article>
 ```
 
-<br />
+<br /><br />
 
 ## `<nav>`
 현재 페이지 내, 또는 다른 페이지로의 링크를 보여주는 구획을 나타냅니다. 자주 쓰이는 예제는 메뉴, 목차, 색인입니다.
@@ -255,7 +243,7 @@
 - 하나의 문서에서 여러 개의 `<nav>` 태그를 가질 수 있습니다. 이럴 때 [`aria-labelledby`](https://developer.mozilla.org/ko/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) 를 사용해 접근성을 향상할 수 있습니다.
 - 스크린 리더 등 장애를 가진 사용자를 위한 사용자 에이전트는 최초 렌더링에서 탐색 전용 콘텐츠를 제외할지 결정할 때 `<nav>`를 참고합니다.
 
-<br />
+<br /><br />
 
 ## `<address>`
 사람, 단체, 조직 등에 대한 연락처 정보를 나타냅니다. 또한 `<article>` 내부에 배치해서 글의 작성자를 나타낼 수도 있습니다.
@@ -277,12 +265,12 @@
 `<a href="mailto:...">` 를 클릭하면, 각 플랫폼에서 지원하는 메일 쓰기 페이지/앱으로 이동합니다. <br />
 `<a href="tel:...">` 를 클릭하면, 각 플랫폼에서 지원하는 전화 앱으로 이동합니다.
 
-<br />
+<br /><br />
 
 ## `<div>`
 아무 의미가 없는 영역을 나타냅니다. 스타일링 목적으로 사용합니다.
 
-<br />
+<br /><br />
 
 ## `<ul>`/`<ol>`/`<li>`
 순서가 있는 목록(`<ol>`) / 순서가 없는 목록(`<ul>`)에 사용합니다. `<li>` 태그는 목록의 각 아이템입니다.
@@ -294,7 +282,7 @@
 
 <br />
 
-### `<ul>` 요소의 특성
+### `<ul>` 요소의 속성
 - `type` : 넘버링 타입 ()
 
     - `a` : lowercase letters
@@ -325,13 +313,13 @@
 
 <br />
 
-### `<li>` 요소의 특성
+### `<li>` 요소의 속성
 
 - `value` : `<ol>` 요소 내부에서 이 값에서부터 번호를 매깁니다. 숫자만 넣을수 있습니다. 
 
 > 부모 `<ol>` 요소에서 지정하는 유형을 덮어쓰는 `type` 속성은 사용이 중단됐습니다. 대신 CSS [list-style-type](https://developer.mozilla.org/ko/docs/Web/CSS/list-style-type) 속성을 사용하세요.
 
-<br />
+<br /><br />
 
 ## `<dl>`/`<dt>`/`<dd>`
 `<dl>` 태그는 설명 그룹의 목록을 나타냅니다. 설명 그룹은 용어(`<dt>`) + 정의(`<dd>`)를 한 그룹으로 합니다. 주로 용어사전 구현이나 메타데이터(키-값 쌍 목록)를 표시하는데 사용합니다. <br />
@@ -390,7 +378,7 @@
 </ul>
 ```
 
-<br />
+<br /><br />
 
 ## `<p>`
 하나의 문단을 나타냅니다. HTML에서 문단은 이미지나 입력 폼 등 서로 관련있는 콘텐츠 무엇이나 될 수 있습니다.
@@ -404,7 +392,7 @@
 
 > 닫는 태그는 `<p>` 요소의 바로 뒤에 `<address>`, `<article>`, `<aside>`, `<blockquote>`, `<div>`, `<dl>`, `<fieldset>`, `<footer>`, `<form>`, `<h1>-<h6>`, `<header>`, `<hr>`, `<menu>`, `<nav>`, `<ol>`, `<pre>`, `<section>`, `<table>`, `<ul>`, `<p>` 요소가 위치하는 경우, 또는 부모 태그의 콘텐츠가 더 존재하지 않고 부모가 `<a>` 요소가 아닐 때 생략할 수 있습니다.
 
-<br />
+<br /><br />
 
 ## `<hr />`
 문단을 분리합니다. 이야기 장면 전환, 구획 내 주제 변경 등 문단 레벨에서 주제의 분리를 나타냅니다.
@@ -450,7 +438,7 @@ hr {
 ```
 위와 같이 하면 `<hr />` 가로줄의 두께는 1px 입니다.
 
-<br />
+<br /><br />
 
 ## `<pre>`
 미리 서식을 지정한 텍스트를 나타내며, HTML에 작성한 내용 그대로 표현합니다. 내부에 [구문 콘텐츠](https://developer.mozilla.org/ko/docs/Web/Guide/HTML/Content_categories#%EA%B5%AC%EB%AC%B8_%EC%BD%98%ED%85%90%EC%B8%A0) 태그만 사용할 수 있습니다.
@@ -481,7 +469,7 @@ hr {
 
 위의 예시에서는 `<figure>`, `<figcaption>` 태그, `id` 속성, ARIA `role`, `aria-labelledby` 속성을 조합하여 사용했습니다. `<pre>` 요소를 마치 이미지처럼 표현하면서 `<figcaption>` 요소를 사용하여 대체 설명을 제공하고 있습니다.
 
-<br />
+<br /><br />
 
 ## `<blockquote>`
 텍스트가 긴 인용문임을 나타냅니다. 주로 들여쓰기를 한 것으로 그려집니다.
@@ -509,18 +497,18 @@ hr {
 </blockquote>
 ```
 
-<br />
+<br /><br />
 
 ## `<a>`
 다른 페이지나 같은 페이지의 어느 위치(`#id`), 파일, 이메일 주소와 그 외 다른 URL로 연결할 수 있는 하이퍼링크를 만듭니다. 
 > Anchor
 
-- `href` 특성을 통해 다른 URL로 이동할 수 있습니다.
+- `href` 속성을 통해 다른 URL로 이동할 수 있습니다.
 - `<a>` 안의 콘텐츠는 링크 목적지의 설명을 나타내야 합니다.
 
 <br />
 
-### `<a>`요소의 특성
+### `<a>`요소의 속성
 - `download` : 링크로 이동하는 대신 사용자에게 URL을 저장할지 물어봅니다. 값을 지정하면 저장할 때의 파일 이름으로서 제안합니다. `/`와 `\` 문자는 `_`로 변환합니다. 값이 없으면 파일 이름과 확장자는 브라우저가 다양한 인자로부터 생성해 제안합니다.
     > `download`는 [동일 출처 URL](https://developer.mozilla.org/ko/docs/Web/Security/Same-origin_policy) 과 `blob:`, `data:` 스킴에서만 작동합니다.
                                                                                                                                                
@@ -544,10 +532,10 @@ hr {
 <br />
 
 ### 보안 취약성
-`target` 특성을 사용할 때, `rel="noreferrer"`를 추가해 `window.opener` API의 악의적인 사용을 방지하는걸 고려하세요.
+`target` 속성을 사용할 때, `rel="noreferrer"`를 추가해 `window.opener` API의 악의적인 사용을 방지하는걸 고려하세요.
 > [Target="_blank" - the most underestimated vulnerability ever](https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/)
 
-<br />
+<br /><br />
 
 ## `<abbr>`
 약어를 나타냅니다. 선택 속성인 `title`을 사용하면 준말의 전체 뜻이나 설명을 제공할 수 있습니다.
@@ -575,7 +563,7 @@ abbr {
 <abbr title="Cascading Style Sheets">CSS</abbr>
 ```
 
-<br />
+<br /><br />
 
 ## `<b>`
 독자의 주의를 끌기 위해 사용합니다.
@@ -584,7 +572,7 @@ abbr {
 - 다른 태그가 적합하지 않은 경우 마지막 수단으로 사용하며 특별한 의미를 가지지 않습니다.
 - 기본적으로 글자가 두껍게(Bold) 표시됩니다.
 
-<br />
+<br /><br />
 
 ## `<mark>`
 맥락 내에서 사용자의 관심을 끌기 위해 하이라이트 효과를 줄 때 사용합니다.
@@ -599,6 +587,7 @@ abbr {
 
 ### 접근성 고려사항
 대부분의 스크린 리더는 기본값에서 `<mark>` 요소의 존재를 표현하지 않습니다. 그러나 CSS content 속성과 ::before, ::after 의사 요소를 사용하면 소리내어 읽도록 할 수 있습니다.
+
 ```css
 mark::before, 
 mark::after {
@@ -622,7 +611,7 @@ mark::after {
 
 > 일부 사용자에게는 지나치게 자세한 안내를 유발할 수 있으므로 이 방식을 남용해서는 안됩니다. 콘텐츠의 이해에 강조표시의 유무가 꼭 필요할 때만 사용해야 합니다.
 
-<br />
+<br /><br />
 
 ## `<em>`
 단순한 의미 강조를 표시합니다. 
@@ -634,7 +623,7 @@ mark::after {
 - 스크린 리더에서 구두 강조로 발음됩니다.
 - 기본적으로 이탤릭체(Italic type)로 표시됩니다.
 
-<br />
+<br /><br />
 
 ## `<strong>`
 중대하거나 긴급한 콘텐츠를 나타냅니다.
@@ -643,11 +632,12 @@ mark::after {
 <br />
 
 ### 예제
+
 ```html
 <p>Before proceeding, <strong>make sure you put on your safety goggles</strong>.</p>
 ```
 
-<br />
+<br /><br />
 
 ## `<i>`
 텍스트에서 어떤 이유로 주위와 구분해야 하는 부분, 주변과 톤이 다른 부분에 사용합니다. (기술 용어, 외국어 구절, 등장인물의 생각, 아이콘 등)
@@ -660,18 +650,19 @@ mark::after {
     - `<cite>` 태그는 책, 공연, 음악 등 저작물의 이름을 나타냅니다.
     - `<dfn>` 태그는 정의 대상인 용어를 나타냅니다.
 
-<br />
+<br /><br />
 
 ## `<dfn>`
 정의하고 있는 용어를 나타냅니다. `<dfn>`에서 가장 가까운 `<p>`, `<dt>`/`<dd>` 쌍, `<section>` 조상 요소를 용어 정의로 간주합니다.
 
-- `<dfn>` 요소가 `title` 특성을 가지고 있으면 그 값을 현재 정의 중인 용어로 간주합니다. 
-- `<dfn>`이 자식으로 `title` 특성을 가진`<abbr>`을 가지는 경우, 자식 `<abbr>`의 `title` 특성 값을 현재 용어로 간주합니다.
-- `<dfn>` 요소에 `id` 특성을 지정하면 `<a>` 요소로 `<dfn>`을 가리킬 수 있습니다.
+- `<dfn>` 요소가 `title` 속성을 가지고 있으면 그 값을 현재 정의 중인 용어로 간주합니다. 
+- `<dfn>`이 자식으로 `title` 속성을 가진`<abbr>`을 가지는 경우, 자식 `<abbr>`의 `title` 속성 값을 현재 용어로 간주합니다.
+- `<dfn>` 요소에 `id` 속성을 지정하면 `<a>` 요소로 `<dfn>`을 가리킬 수 있습니다.
 
 <br />
 
 ### 예제
+
 ```html
 <p>The <strong>HTML Definition element</strong>
 (<strong><dfn id="definition-dfn">&lt;dfn&gt;</dfn></strong>) is
@@ -682,25 +673,25 @@ definition phrase or sentence.</p>
 <code><a href="#definition-dfn">&lt;dfn&gt;</a></code> element for
 this project.</p>
 ```
-코드 뒤쪽에서는 `<a>` 태그와 `href` 특성 값 `"#definition-dfn"`으로, 정의를 가리키는 링크를 생성합니다.
+코드 뒤쪽에서는 `<a>` 태그와 `href` 속성 값 `"#definition-dfn"`으로, 정의를 가리키는 링크를 생성합니다.
 
-<br />
+<br /><br />
 
 ## `<cite>`
 저작물의 출처를 표기할 때 사용하며, 제목을 반드시 포함해야 합니다.
 
 - W3C 명세는 `<cite>` 요소로 저작물의 출처를 표기할 때 저작자도 표기할 수 있음을 명시하고 있습니다. 그러나 정반대로, WHATWG 명세는 사람 이름을 어떤 상황에서도 절대 포함하지 말아야 한다고 적혀있다는 점을 알아두는 것이 좋습니다.
 
-<br />
+<br /><br />
 
 ## `<q>`
 짦은 인용문
 > Quotation
 
 - `<q>`는 줄 바꿈이 없는 짧은 경우에 적합합니다. 긴 인용문은 `<blockquote>` 요소를 사용하세요.
-- 인용문의 출처 문서나 메시지를 가리키는 URL을 사용하기 위해 `cite` 특성을 이용할 수 있습니다.
+- 인용문의 출처 문서나 메시지를 가리키는 URL을 사용하기 위해 `cite` 속성을 이용할 수 있습니다.
 
-<br />
+<br /><br />
 
 ## `<u>`
 HTML 5에서 `<u>` 요소는 텍스트가 일종의 문자가 아닌 주석(Non-textual annotation)을 가지고 있음을 나타냅니다. 철자 오류 강조, 중국어의 고유 명사 표시 등에 주로 쓰입니다.
@@ -718,7 +709,7 @@ HTML 5에서 `<u>` 요소는 텍스트가 일종의 문자가 아닌 주석(Non-
 <p>맞춤법을 틀리면 <u class="spelling">않돼요</u>.</p>
 ```
 
-<br />
+<br /><br />
 
 ## `<code>`
 짧은 코드 조각을 나타냅니다.
@@ -728,7 +719,7 @@ HTML 5에서 `<u>` 요소는 텍스트가 일종의 문자가 아닌 주석(Non-
 <p>The <code>push()</code> method adds one or more elements to the end of an array and returns the new length of the array.</p>
 ```
 
-<br />
+<br /><br />
 
 ## `<kbd>`
 텍스트 입력 장치(키보드)에서 키보드 입력, 음성 입력을 나타냅니다.
@@ -740,7 +731,7 @@ HTML 5에서 `<u>` 요소는 텍스트가 일종의 문자가 아닌 주석(Non-
 <p>Please press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to re-render an MDN page.</p>
 ```
 
-<br />
+<br /><br />
 
 ## `<sup>`/`<sub>`
 위 첨자(`<sup>`)와 아래 첨자(`<sub>`)를 표시할 때 사용합니다.
@@ -754,12 +745,12 @@ HTML 5에서 `<u>` 요소는 텍스트가 일종의 문자가 아닌 주석(Non-
 X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 ```
 
-<br />
+<br /><br />
 
 ## `<time>`
 시간의 특정 지점 또는 구간을 나타냅니다. `datetime` 속성을 지정하면 적절한 검색 결과, 알림 같은 특정 기능을 구현할 때 사용할 수 있습니다.
 
-- `datetime` 특성이 없는 경우 어떠한 자식 요소도 두어서는 안되며, 요소의 텍스트 콘텐츠를 `datetime` 특성 값으로 간주합니다.
+- `datetime` 속성이 없는 경우 어떠한 자식 요소도 두어서는 안되며, 요소의 텍스트 콘텐츠를 `datetime` 속성 값으로 간주합니다.
 
 ```html
 <time datetime="2018-07-07">July 7</time>
@@ -770,12 +761,12 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 ```
 > [유효한 datetime 값](https://developer.mozilla.org/ko/docs/Web/HTML/Element/time) 을 확인하세요.
 
-<br />
+<br /><br />
 
 ## `<span>`
 본질적으로는 아무것도 나타내지 않습니다. 주로 스타일을 적용하기 위해 사용합니다.
 
-<br />
+<br /><br />
 
 ## `<br />`
 텍스트 안에 줄바꿈(캐리지 리턴)을 생성합니다. (주소나 시조 등 줄의 구분)
@@ -784,13 +775,13 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 - `<br />` 요소에 CSS `margin`을 적용하면 줄 간격을 늘릴 수 있겠지만 좋은 방법은 아닙니다. 줄 간격은 `line-height` 속성을 사용하세요.
 - 웹 접근성을 위해서는 `<br />` 대신 `<p>` 요소와 함께 CSS `margin` 속성 등을 조합해 간격을 조절하세요.
 
-<br />
+<br /><br />
 
 ## `<data>`
 주어진 콘텐츠를 기계가 읽을 수 있는 해석본과 연결합니다.
 
 - 콘텐츠가 시간 혹은 날짜 관련 정보라면 대신 `<time>` 요소를 사용하세요.
-- 기계가 읽을 수 있는 형태의 콘텐츠 해석본은 `value` 특성으로 표시합니다.
+- 기계가 읽을 수 있는 형태의 콘텐츠 해석본은 `value` 속성으로 표시합니다.
 
 <br />
 
@@ -805,16 +796,271 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 ```
 상품의 이름을 표시하면서, 각각의 상품 번호도 연결합니다.
 
-<br />
+<br /><br />
 
 ## `<ruby>`
-루비 주석을 나타냅니다. 루비 주석은 동아시아 문자의 발음을 표기할 때 사용합니다. (<img src="../assets/ruby.png" alt="동아시아 문자" width="30"/>)
+루비 주석을 나타냅니다. 루비 주석은 동아시아 문자의 발음을 표기할 때 사용합니다. 
 
 ```
 <ruby>
 明日 <rp>(</rp><rt>Ashita</rt><rp>)</rp>
 </ruby>
 ```
+
+<br /><br />
+
+## `<img />`
+문서에 이미지를 넣습니다.
+
+- `src` 속성은 필수이며, 포함하고자 하는 이미지로의 경로를 지정합니다.
+- `alt` 속성은 이미지의 텍스트 설명을 합니다.
+    > 스크린 리더가 `alt`의 값을 읽어 사용자에게 이미지를 설명하므로, 접근성 차원에서 매우 유용합니다. 또한 네트워크 오류, 콘텐츠 차단, 죽은 링크 등 이미지를 표시할 수 없는 경우에도 이 속성의 값을 대신 보여줍니다.
+-  이미지가 부연 설명을 필요로 하는 경우 `<figure>`와 `<figcaption>` 요소를 사용하세요.
+-  `srcset` 속성을 이용해 고해상도 버전 이미지를 추가할 수 있습니다.
+
+<br />
+
+## Styling
+
+- `<img>`는 [대체 요소](https://developer.mozilla.org/ko/docs/Web/CSS/Replaced_element) 입니다. 기본적으로 `display`는 `inline`이나,  `border`/`border-radius`, `padding`/`margin`, `width`, `height` 등의 속성을 이미지에 지정할 수 있습니다.
+- `<img>`는 기준선을 갖지 않으므로, `vertical-align: baseline`을 지정한 인라인 서식 맥락에서는 이미지의 아래쪽 모서리가 텍스트 기준선으로 가게 됩니다.
+- 요소 박스 내의 이미지 위치는 `object-position` 속성으로 바꿀 수 있습니다. 크기는 `object-fit` 속성을 통해 요소 크기에 맞출지, 요소를 채울지 등을 지정할 수 있습니다.
+- 이미지는 고유 너비와 높이를 가질 수 있지만, `<svg>` 요소는 `width`와 `height`가 없는 경우 고유 크기를 가지지 않습니다.
+
+<br /><br />
+
+## `<audio>`
+문서에 소리 콘텐츠(MP3)를 포함할 때 사용합니다. `src` 속성 또는 `<source>` 요소를 사용해 한 개 이상의 오디오 소스를 지정할 수 있습니다.
+
+- 부라우저가 오디오 소스를 지원하지 못할 경우를 대비해 다수의 `<source>` 요소를 제공할 수 있습니다. 부라우저는 첫번째 `<source>`부터 적용을 시도합니다.
+
+```html
+<audio controls>
+  <source src="myAudio.mp3" type="audio/mpeg">
+  <source src="myAudio.ogg" type="audio/ogg">
+  <p>Your browser doesn't support HTML5 audio. Here is
+     a <a href="myAudio.mp4">link to the audio</a> instead.</p>
+</audio>
+```
+<br />
+
+### `<audio>` 요소의 속성
+
+- `autoplay` : 전체 오디오 파일의 다운로드를 기다리지 않고 바로 재생 (Boolean)	
+    > [자동 재생 안내서](https://developer.mozilla.org/ko/docs/Web/Media/Autoplay_guide)를 확인하고 필요한 경우에만 `autoplay` 속성을 사용하세요.
+- `controls` : 제어 메뉴를 표시	(Boolean)	
+- `loop` : 재생이 끝나면 다시 처음부터 재생	(Boolean)
+- `muted` : 음소거 여부, 기본값은 `false` (Boolean)	
+- `preload` : 페이지가 로드될 때 파일을 로드할지 브라우저에게 알려줍니다. `autoplay`와 함께 쓰이면 `preload`는 무시됩니다.
+    - `none` : 로드하지 않습니다.
+    - `metadata` : 메타데이터만 로드합니다.
+    - `auto` : 전체파일을 로드합니다.
+- `src`
+
+<br /><br />
+
+## `<video>`
+미디어 플레이어(MP4)를 문서에 삽입합니다.
+
+- `<video></video>` 태그 안의 콘텐츠는 브라우저가 `<video>` 요소를 지원하지 않을 때 보여집니다.
+
+<br />
+
+### `<video>` 요소의 속성
+- `autoplay` : 전체 오디오 파일의 다운로드를 기다리지 않고 바로 재생 (Boolean)	
+- `controls` : 제어 메뉴를 표시	(Boolean)	
+- `loop` : 재생이 끝나면 다시 처음부터 재생	(Boolean)	
+- `muted` : 음소거 여부, 기본값은 `false` (Boolean)	
+- `poster` : 동영상 썸네일 이미지 URL
+- `preload` : 페이지가 로드될 때 파일을 로드할지 브라우저에게 알려줍니다. `autoplay`와 함께 쓰이면 `preload`는 무시됩니다.
+    - `none` : 로드하지 않습니다.
+    - `metadata` : 메타데이터만 로드합니다.
+    - `auto` : 전체파일을 로드합니다.
+- `height`/`width`
+- `src`
+
+
+<br /><br />
+
+## `<track>` 
+미디어 요소(`<audio>`, `<video>`)의 자식으로서, 자막 등 시간별 텍스트 트랙(시간 기반 데이터)를 지정할 때 사용합니다. 
+> 트랙은 `.vtt` 파일 또는 [Timed Text Markup Language(TTML)](https://w3c.github.io/ttml2/index.html) 형식을 사용해야 합니다.
+
+- `<track>` 요소가 미디어에 추가하는 데이터의 유형은 `kind` 속성으로 나타낼 수 있습니다.
+- 사용자가 추가 데이터를 요청하는 경우, 브라우저는 `<track>` 요소가 가리키는 시간별 텍스트 데이터를 보여줍니다.
+- 미디어 요소는 동일한 `kind`, `srclang`, `label`을 가진 `<track>`을 하나만 포함할 수 있습니다.
+
+<br /><br />
+
+## `<map>`
+이미지 맵을 정의하기 위해 사용합니다. 이미지 맵이란, 이미지에서 클릭할 수 있는 링크 영역을 의미합니다.
+
+- `<area>` 태그와 함께 사용합니다.
+```html
+<map name="infographic">
+	<area
+		shape="poly"
+		coords="130,147,200,107,254,219,130,228"
+		href="https://developer.mozilla.org/docs/Web/HTML"
+		target="_blank"
+		alt="HTML"
+	/>
+	<area
+		shape="poly"
+		coords="130,147,130,228,6,219,59,107"
+		href="https://developer.mozilla.org/docs/Web/CSS"
+		target="_blank"
+		alt="CSS"
+	/>
+	<area
+		shape="poly"
+		coords="130,147,200,107,130,4,59,107"
+		href="https://developer.mozilla.org/docs/Web/JavaScript"
+		target="_blank"
+		alt="JavaScript"
+	/>
+</map>
+<img
+	usemap="#infographic"
+	src="/media/examples/mdn-info2.png"
+	alt="MDN infographic"
+/>
+```
+<img src="./assets/map.png" alt="map 요소 예제 이미지" width="100"/>
+
+<br />
+
+### `<map>`의 속성
+- `name` 이미지 맵의 이름, 문서의 다른 부분에서 해당 맵을 참조할 때 해쉬(`#`)를 붙여 사용
+    - 반드시 존재해야 합니다.
+    - 값이 비면 안됩니다.
+    - 값에 공백 문자가 포함 될 수 없습니다.
+    - `name` 속성은 문서 내의 모든 <map>에서 유일해야 합니다.
+    - `id` 속성이 존재하는 경우 `name`과 값이 동일해야 합니다.
+
+<br /><br />
+
+## `<figure>`/`<figcaption>`
+`<figure>`는 독립적인 콘텐츠 영역을 설정합니다.
+`<figcaption>`는 `<figure>`에 포함되어 설명을 표시합니다. (Figure Caption)
+
+- 보통 `<figure>`는 다른 부분이나 부록으로 이동해도 문제 없는 이미지, 삽화, 도표, 코드 조각 등을 맡습니다.
+
+<br />
+
+### 예제
+```html
+<figure>
+    <img src="/media/cc0-images/elephant-660-480.jpg"
+         alt="Elephant at sunset">
+    <figcaption>An elephant at sunset</figcaption>
+</figure>
+```
+
+```html
+<figure>
+  <figcaption><code>navigator</code>를 이용하여 브라우저 정보 얻기</figcaption>
+  <pre>
+    function NavigatorExample() {
+      var txt;
+      txt = "Browser CodeName: " + navigator.appCodeName;
+      txt+= "Browser Name: " + navigator.appName;
+    }            
+  </pre>
+</figure>
+```
+
+<br /><br />
+
+## `<iframe>`
+현재 문서 안에 다른 HTML 페이지를 삽입합니다. (중첩 [브라우징 맥락](https://developer.mozilla.org/en-US/docs/Glossary/Browsing_context))
+
+- inline 요소입니다.
+- 페이지에 `<iframe>`을 추가할 때마다 메모리 및 기타 컴퓨터 자원 사용량이 늘어납니다. 
+
+<br />
+
+### `<iframe>` 속성
+
+- `name` : 프레임의 이름, 이 이름을 사용해서 다른 요소(`<a>`, `<form>`, `<base>`)나 웹 API(`window.open()`)에서 해당 프레임을 타겟팅 할 수 있습니다.
+- `allowfullscreen` :  전체 화면 모드 사용 여부 (Boolean)
+    - 레거시 속성으로 `allow="fullscreen"`으로 사용해야 합니다.
+- `sandbox` : 보안을 위해 읽기 전용으로 삽입, (Boolean) 또는 속성 값(일부 접근만 허용)
+    - `allow-forms` : `Form` 제출을 허용합니다.
+    - `allow-scripts` : 프레임 문서의 JavaScript 동작을 허용합니다.
+    - `allow-same-origin` : 동일 출처 리소스 사용을 허용합니다. 명시하지 않으면, 무조건 동일 출처 정책에 위배되는 리소스로 간주합니다.
+    
+        > [`sandbox` 속성 값 모두 보기](https://developer.mozilla.org/ko/docs/Web/HTML/Element/iframe)
+- `height`/`width`
+- `src`
+
+> `frameborder`는 더이상 사용하지 않는 속성입니다.    
+
+<br /><br />
+
+## `<object>`
+외부 리소스를 나타내기 위해 사용합니다. `<object>` 요소는 이미지, 새로운 브라우징 맥락, 플러그인으로 작동시키는 리소스 등으로 인식됩니다.
+
+```html
+<!-- Embed a flash movie -->
+<object data="move.swf" type="application/x-shockwave-flash"></object>
+
+<!-- Embed a flash movie with parameters -->
+<object data="move.swf" type="application/x-shockwave-flash">
+  <param name="foo" value="bar">
+</object>
+```
+`<object>` 요소의 `data`, `type`, `form`, `name`, `usemap` 속성을 제외한, 대부분의 속성들이 HTML5 이후로 Deprecated 되었습니다.
+
+<br />
+
+### `<object>` 속성
+- `data` : 리소스 URL
+- `type` : 리소스 포맷/타입
+- `form` : 문서 내 `<form>` 태그의 `id` 값을 이 속성 값으로 지정하면, 해당 폼과 외부 리소스를 연결
+- `name` : 유효한 새로운 브라우징 맥락이 있다면, 브라우징 맥락의 이름 지정
+- `usemap` : 해쉬이름(`#`)을 사용하여 `<map>` 태그를 연결
+
+
+<br /><br />
+
+## `<canvas>`
+[Canvas API](https://developer.mozilla.org/ko/docs/Web/HTML/Canvas) 이나 [WebGL API](https://developer.mozilla.org/ko/docs/Web/API/WebGL_API) 를 사용하여 그래픽이나 애니메이션을 랜더링합니다.
+
+- 웹 접근성을 위해 `<canvas>` 블록 안에 대체 콘텐츠를 제공하세요.
+- 대체 콘텐츠는 캔버스를 지원하지 않는 구형 브라우저와, JavaScript를 비활성화한 브라우저에서 표시됩니다.
+- `<canvas>` 요소는 닫는 태그(`</canvas>`)를 필요로 합니다.
+- `<canvas>` 요소의 크기는 CSS가 아닌 HTML 에서 `width`와 `height` 속성을 통해 직접 크기를 바꾸세요. JavaScript를 사용할 수도 있습니다.
+- 최대 캔버스 크기는 브라우저마다 다릅니다.
+
+<br />
+
+### 예제
+
+#### HTML
+```html
+<canvas id="canvas" width="300" height="300">
+  캔버스의 내용을 설명하는 대체 텍스트
+</canvas>
+```
+
+#### JavaScript
+```javascript
+var canvas = document.getElementById('canvas'); 
+var ctx = canvas.getContext('2d'); 
+ctx.fillStyle = 'green'; 
+ctx.fillRect(10, 10, 100, 100);
+```
+JavaScript 코드 내에서 `HTMLCanvasElement.getContext()`를 호출해 그리기 맥락을 얻어서 캔버스 위에 그립니다.
+
+### 웹 접근성 문제
+`<canvas>` 요소 자체는 비트맵에 불과하며 어떠한 정보도 제공하지 않습니다. 대체 컨텐츠 이외에 캔버스 접근성을 높이는 사용법을 알아보세요.
+- [히트(Hit) 영역과 접근성](https://developer.mozilla.org/ko/docs/Web/HTML/Canvas/Tutorial/Hit_regions_and_accessibility)
+- [Canvas 접근성 유즈 케이스](https://www.w3.org/WAI/PF/HTML/wiki/Canvas_Accessibility_Use_Cases)
+- [Canvas 엘리먼트 접근성 문제](https://www.w3.org/html/wg/wiki/AddedElementCanvas)
+- [대화형 캔버스 엘리먼트의 모범 사례](https://html.spec.whatwg.org/multipage/canvas.html#best-practices)
+
+<br /><br />
 
 
 ***
