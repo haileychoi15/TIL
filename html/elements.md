@@ -195,7 +195,7 @@
 
 > 브라우저 호환성 이슈 : Internet Explorer 11 이하를 지원할 땐 `<main>` 요소에 `"main"` [role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques#Landmark_roles) [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques) 역할을 명시해 접근성을 확보하는 것이 좋습니다.
 
-```
+```html
 <main role="main">
   ...
 </main>
@@ -231,7 +231,7 @@
 - `<aside>` 요소는 `<address>`의 자손이 될 수 없습니다.
 
 다음 예제는 글 내의 문단을 `<aside>`로 표시합니다. 해당 문단은 글의 주제와 간접적으로만 연결되어 있습니다.
-```
+```html
 <article>
   <p>
     디즈니 만화영화 <em>인어 공주</em>는
@@ -266,8 +266,8 @@
 
 <br />
 
-예제
-```
+### 예제
+```html
 <address>
 	<a href="mailto:imdud0612@gmail.com">imdud0612@gmail.com</a><br />
 	<a href="tel:+13115552000">(311) 555-2000</a>
@@ -312,8 +312,8 @@
 
 <br />
 
-예제
-```
+### 예제
+```html
 <ol type="1" reversed>
 	<li>Mix flour, baking powder, sugar, and salt.</li>
 	<li>In another bowl, mix eggs, milk, and oil.</li>
@@ -344,7 +344,7 @@
 ### Styling
 용어 그룹을 묶어서 스타일링할 때 `<div>` 태그를 사용할 수 있습니다.
 
-```
+```html
 <dl>
 	<div>
 		<dt>Beast of Bodmin</dt>
@@ -371,7 +371,7 @@
 
 > `<dfn>`은 용어 하나를 정의하는 태그입니다.
 
-```
+```html
 <ul>
 	<li>
 		<dfn>Beast of Bodmin</dfn>
@@ -414,8 +414,8 @@
 
 <br />
 
-예제
-```
+### 예제
+```html
 <p>
 This is the first paragraph of text. 
 This is the first paragraph of text.
@@ -434,7 +434,7 @@ This is second paragraph of text.
 ### Styling
 `<hr />` 요소는 사실 단순한 가로줄이 아닌, 납작한 박스 형태입니다. 기본적으로 모든 요소는 사각형의 박스 형태를 하고 있죠. 따라서 `border` 속성 값을 아래와 같이 작성하면, 해당 `<hr />` 요소가 그려내는 가로줄의 두께는 2px이 됩니다.
 
-```
+```html
 hr {
 	border: 1px solid tomato;
 }
@@ -442,7 +442,7 @@ hr {
 
 가로줄을 숨기거나 꾸미려면 브라우저마다 제각각 적용된 `border` 스타일을 제거하세요. (`border: none`) 쓰면 됩니다.
 
-```
+```html
 hr {
 	border: none;
 	border-top: 1px solid tomato;
@@ -461,7 +461,7 @@ hr {
 ### 접근성 고려사항
 `<pre>` 요소로 만든 이미지나 도표에 대한 대체 설명을 지정하는 것이 중요합니다. 
 
-```
+```html
 <figure role="img" aria-labelledby="cow-caption">
   <pre>
   _______________________
@@ -498,8 +498,8 @@ hr {
  
  <br />
  
- 예제
- ```
+ ### 예제
+ ```html
 <blockquote cite="https://www.huxley.net/bnw/four.html">
 	<p>
 		Words can be like X-rays, if you use them properly—they’ll go through
@@ -562,7 +562,7 @@ hr {
 <br />
 
 ### Styling
-```
+```css
 abbr {
 	font-variant: all-small-caps;
 }
@@ -570,8 +570,8 @@ abbr {
 
 <br />
 
-예제
-```
+### 예제
+```html
 <abbr title="Cascading Style Sheets">CSS</abbr>
 ```
 
@@ -599,7 +599,7 @@ abbr {
 
 ### 접근성 고려사항
 대부분의 스크린 리더는 기본값에서 `<mark>` 요소의 존재를 표현하지 않습니다. 그러나 CSS content 속성과 ::before, ::after 의사 요소를 사용하면 소리내어 읽도록 할 수 있습니다.
-```
+```css
 mark::before, 
 mark::after {
   clip-path: inset(100%);
@@ -642,8 +642,8 @@ mark::after {
 
 <br />
 
-예제
-```
+### 예제
+```html
 <p>Before proceeding, <strong>make sure you put on your safety goggles</strong>.</p>
 ```
 
@@ -671,8 +671,8 @@ mark::after {
 
 <br />
 
-예제
-```
+### 예제
+```html
 <p>The <strong>HTML Definition element</strong>
 (<strong><dfn id="definition-dfn">&lt;dfn&gt;</dfn></strong>) is
 used to indicate the term being defined within the context of a
@@ -712,9 +712,9 @@ HTML 5에서 `<u>` 요소는 텍스트가 일종의 문자가 아닌 주석(Non-
 
 <br />
 
-예제
+### 예제
 
-```
+```html
 <p>맞춤법을 틀리면 <u class="spelling">않돼요</u>.</p>
 ```
 
@@ -724,7 +724,7 @@ HTML 5에서 `<u>` 요소는 텍스트가 일종의 문자가 아닌 주석(Non-
 짧은 코드 조각을 나타냅니다.
 
 - 여러 줄의 코드를 나타내려면 `<code>` 요소를 `<pre>`로 감싸세요. 보통 상황에서 `<code>`는 코드 한 줄만 나타냅니다.
-```
+```html
 <p>The <code>push()</code> method adds one or more elements to the end of an array and returns the new length of the array.</p>
 ```
 
@@ -736,7 +736,7 @@ HTML 5에서 `<u>` 요소는 텍스트가 일종의 문자가 아닌 주석(Non-
 
 - `<kbd>` 요소를 다른 `<kbd>` 요소 안에 배치해, 하나의 입력 안의 작은 부분이나, 실제 타이핑 키를 하나씩 나타낼 수 있습니다.
 
-```
+```html
 <p>Please press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to re-render an MDN page.</p>
 ```
 
@@ -750,7 +750,7 @@ HTML 5에서 `<u>` 요소는 텍스트가 일종의 문자가 아닌 주석(Non-
 
     > 단순히 글씨 기준선을 올리거나 내려야 한다면 CSS `vertical-align: super`/`vertical-align: sub`를 사용할 수 있습니다. 기준선을 25% 내려야 한다면 `vertical-align: -25%`로 씁니다. 
 
-```
+```html
 X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 ```
 
@@ -761,7 +761,7 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 
 - `datetime` 특성이 없는 경우 어떠한 자식 요소도 두어서는 안되며, 요소의 텍스트 콘텐츠를 `datetime` 특성 값으로 간주합니다.
 
-```
+```html
 <time datetime="2018-07-07">July 7</time>
 
 <time datetime="20:00">20:00</time>
@@ -785,6 +785,42 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 - 웹 접근성을 위해서는 `<br />` 대신 `<p>` 요소와 함께 CSS `margin` 속성 등을 조합해 간격을 조절하세요.
 
 <br />
+
+## `<data>`
+주어진 콘텐츠를 기계가 읽을 수 있는 해석본과 연결합니다.
+
+- 콘텐츠가 시간 혹은 날짜 관련 정보라면 대신 `<time>` 요소를 사용하세요.
+- 기계가 읽을 수 있는 형태의 콘텐츠 해석본은 `value` 특성으로 표시합니다.
+
+<br />
+
+### 예제
+```html
+<p>New Products:</p>
+<ul>
+    <li><data value="398">Mini Ketchup</data></li>
+    <li><data value="399">Jumbo Ketchup</data></li>
+    <li><data value="400">Mega Jumbo Ketchup</data></li>
+</ul>
+```
+상품의 이름을 표시하면서, 각각의 상품 번호도 연결합니다.
+
+<br />
+
+## `<ruby>`
+루비 주석을 나타냅니다. 루비 주석은 동아시아 문자의 발음을 표기할 때 사용합니다. 
+
+```
+<ruby>
+明日 <rp>(</rp><rt>Ashita</rt><rp>)</rp>
+</ruby>
+```
+
+<img src="../assets/ruby.png" alt="동아시아 문자" />
+
+![동아시아 문자](../assets/ruby.png)
+
+
 
 ***
 ### _References_
