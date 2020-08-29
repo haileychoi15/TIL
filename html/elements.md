@@ -19,9 +19,7 @@
 - `<article>`
 - `<nav>`
 - `<h1>-<h6>`
-- `<hgroup>`
-
-    > 다수의 `<h1>-<h6>` 요소를 묶을 때 사용합니다.
+- `<hgroup>` : 다수의 `<h1>-<h6>` 요소를 묶을 때 사용합니다.
 
 <br />
 
@@ -926,7 +924,8 @@ X<sup>4</sup> + Y<sup>2</sup>, H<sub>2</sub>O
 	alt="MDN infographic"
 />
 ```
-<img src="./assets/map.png" alt="map 요소 예제 이미지" width="100"/>
+
+<img src="./assets/map.png" alt="map 요소 예제 이미지" />
 
 <br />
 
