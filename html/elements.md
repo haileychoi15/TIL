@@ -10,7 +10,7 @@
 
 ### Content sectioning
 구획 요소를 사용해 페이지 콘텐츠의 큰 틀을 잡을 수 있습니다. 
-- [`<header>`](## `<header>`)
+- [`<header>`](#`<header>`)
 - `<footer>`
 - `<main>`
 - `<section>`
