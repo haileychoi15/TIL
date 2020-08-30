@@ -10,7 +10,7 @@
 
 ### Content sectioning
 구획 요소를 사용해 페이지 콘텐츠의 큰 틀을 잡을 수 있습니다. 
-- `<header>`
+- [`<header>`](## `<header>`)
 - `<footer>`
 - `<main>`
 - `<section>`
@@ -1334,8 +1334,10 @@ del::after {
 
 ### 접근성 고려사항
 
+- 버튼과 같은 대화형 요소는 최소 `44x44`의 CSS 픽셀 크기를 권고합니다.
+- 다수의 버튼을 시각적으로 가까이 배치할 땐 서로를 분리하는 공간을 둬야 합니다. `margin`과 같은 CSS 속성으로 설정하세요.
 - 아이콘만 사용해 기능을 표현하는 버튼은 `<button>` 요소의 기능을 간략히 묘사하는 텍스트를 안에 포함하세요.
-- 텍스트를 숨기고 싶은 경우 이렇게 CSS를 조합해보세요.
+- 텍스트를 숨기고 싶은 경우, 이렇게 CSS를 조합해보세요.
 
     ```css
      /* Visually hide an element, but leave it available for screen readers */
@@ -1370,8 +1372,6 @@ del::after {
     
     <main id="main">The main content</main>
     ```
-- 버튼과 같은 대화형 요소는 최소 `44x44`의 CSS 픽셀 크기를 권고합니다.
-- 다수의 버튼을 시각적으로 가까이 배치할 땐 서로를 분리하는 공간을 둬야 합니다. `margin`과 같은 CSS 속성으로 설정하세요.
 
 <br /><br />
 
@@ -1379,6 +1379,7 @@ del::after {
 여러 줄의 일반 텍스트 편집 컨트롤을 나타냅니다.
 
 - `<textarea>`는 CSS property `resize`가 가능한 것이 기본값입니다. `resize`가 되지 않도록 바꿀 수 있습니다.
+   
     ```css
     textarea {
       resize: none;
