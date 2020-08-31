@@ -25,117 +25,116 @@
 
 ### Text content
 해당 콘텐츠의 목적이나 구조 판별에 사용하므로 접근성과 SEO(검색 엔진 최적화)에 중요합니다.
-- `<div>`
-- `<main>`
-- `<ul>`/`<ol>`/`<li>`
-- `<dl>`/`<dt>`/`<dd>`
-- `<p>`
-- `<hr />`
-- `<pre>`
-- `<blockquote>`
-- `<figure>`
-- `<figcaption>`
+- [`<div>`](#div)
+- [`<main>`](#main)
+- [`<ul>`/`<ol>`/`<li>`](#ulolli)
+- [`<dl>`/`<dt>`/`<dd>`](#dldtdd)
+- [`<p>`](#p)
+- [`<hr />`](#hr-)
+- [`<pre>`](#pre)
+- [`<blockquote>`](#blockquote)
+- [`<figure>`](#figure)
+- [`<figcaption>`](#figcaption)
 
 
 <br />
 
 ### Inline text semantics
 텍스트의 의미, 구조, 스타일을 정의할 수 있습니다.
-- `<a>`
-- `<abbr>`
-- `<b>`
-- `<bdo>`
-- `<br />`
-- `<cite>`
-- `<code>`
-- `<data>`
-- `<dfn>`
-- `<em>`/`<strong>`
-- `<i>`
-- `<kbd>`
-- `<mark>`
-- `<q>`
-- `<ruby>`
-- `<sub>`/`<sup>`
-- `<u>`
-- `<span>`
-- `<time>`
+- [`<a>`](#a)
+- [`<abbr>`](#abbr)
+- [`<b>`](#b)
+- [`<bdo>`](#bdo)
+- [`<br />`](#br-)
+- [`<cite>`](#cite)
+- [`<code>`](#code)
+- [`<data>`](#data)
+- [`<dfn>`](#dfn)
+- [`<em>`/`<strong>`](#emstrong)
+- [`<i>`](#li)
+- [`<kbd>`](#kbd)
+- [`<mark>`](#mark)
+- [`<q>`](#q)
+- [`<ruby>`](#ruby)
+- [`<sub>`/`<sup>`](#subsup)
+- [`<u>`](#u)
+- [`<span>`](#span)
+- [`<time>`](#time)
 >  더 많은 요소와 설명을 [여기](https://developer.mozilla.org/ko/docs/Web/HTML/Element)에서 볼 수 있습니다.
 
 <br />
 
 ### Image and multimedia
 사진, 오디오, 비디오 등 다양한 멀티미디어 리소스를 지원하는 요소입니다.
-- `<img>`
-- `<audio>`
-- `<video>`
-- `<map>`
-- `<area>`
-- `<track>`
+- [`<img>`](#img))
+- [`<audio>`](#audio)
+- [`<video>`](#video)
+- [`<map>`](#map)
+- [`<area>`](#area)
+- [`<track>`](#track)
 <br />
 
 ### Embedded content
 일반적인 멀티미디어 콘텐츠 이외의 콘텐츠를 포함하는 요소입니다.
-- `<iframe>`
-- `<object>`
+- [`<iframe>`](#iframe)
+- [`<object>`](#object)
 
 <br />
 
 ### Scripting
 동적인 콘텐츠와 웹 어플리케이션을 위해 스크립트 언어(주로 JavaScript)를 지원하는 요소입니다.
-- `<script>`
-- `<noscript>`
-- `<canvas>`
+- [`<script>`](#script)
+- [`<noscript>`](#noscript)
+- [`<canvas>`](#canvas)
 
 <br />
 
 ### Demarcating edits
 텍스트의 특정 부분이 수정됐다는 것을 표시하는 요소입니다.
-- `<del>`
-- `<ins>`
+- [`<del>`](#delins)
+- [`<ins>`](#delins)
 
 <br />
 
 ### Table content
 표 형식의 데이터를 나타내는 요소입니다.
-- `<table>`
-- `<thead>`/`<tbody>`
-- `<th>`/`<tr>`/`<td>`
-- `<caption>`
-- `<col>`/`<colgroup>`
+- [`<table>`](#table)
+- [`<thead>`/`<tbody>`](#thead-tbody)
+- [`<th>`/`<tr>`/`<td>`](#th)
+- [`<caption>`](#caption)
+- [`<col>`/`<colgroup>`](#col-colgroup)
 
 <br />
 
 ### Form
 웹 서버에 데이터를 제출하기 위해 사용하는 양식(Form)을 구성하는 요소입니다. 여러가지 입력 가능한 요소를 제공합니다.
-- `<form>`
-- `<input />`
-- `<label>`
-- `<button>`
-- `<select>`
-- `<datalist>`
-- `<option>`/`<optgroup>`
-- `<textarea>`
-- `<output>`
-- `<progress>`
-- `<fieldset>`/`<legend>`
+- [`<form>`](#form)
+- [`<input />`](#input-)
+- [`<label>`](#label)
+- [`<button>`](#button)
+- [`<select>`](#select)
+- [`<datalist>`](#datalist)
+- [`<option>`/`<optgroup>`](#optionoptgroup)
+- [`<textarea>`](#textarea)
+- [`<output>`](#output)
+- [`<progress>`](#progress)
+- [`<fieldset>`/`<legend>`](#fieldsetlegend)
 - `<meter>` : 특정 범위 내에서의 스칼라 값, 또는 백분율 값을 나타냅니다.
 
 <br />
 
 ### Interactive elements
 상호작용 가능한 사용자 인터페이스 객체를 만들 때 사용할 수 있는 요소입니다.
-- `<details>`
-- `<dialog>`
+- [`<details>`/`<summary>`](#details)
+- [`<dialog>`](#dialog)
 - `<menu>`
-- `<summary>`
 
 <br />
 
 ### Web Components
 완전히 새로운 형태의 요소를 생성한 후 일반적인 HTML처럼 사용할 수 있는 기술을 지원하는 요소입니다.
 - `<slot>`
-- `<template>`
+- [`<template>`](#template)
 
 <br /><br />
 
@@ -1610,32 +1609,138 @@ It was a dark and stormy night...
 <br /><br />
 
 ## `<details>`
+"열림" 상태일 때만 내부 정보를 보여주는 정보 공개 위젯을 생성합니다. 요소의 첫 번째 자식이 `<summary>` 요소라면, `<summary>`의 콘텐츠를 위젯의 레이블로 사용합니다.
+
+```html
+<details>
+    <summary>Details</summary>
+    Something small enough to escape casual notice.
+</details>
+```
+
+<br />
+
+### 속성
+- `open` : `<details>` 요소의 콘텐츠가 현재 보이는 상태인지 나타냅니다. (기본값 `false`)
+    - `<details>`가 처음부터 열려있는 상태로 나타나게 하려면 `open` 속성을 지정하세요.
+        ```html
+        <details open>
+          <summary>System Requirements</summary>
+          <p>Requires a computer running an operating system. The computer
+          must have some memory and ideally some kind of long-term storage.
+          An input device as well as some form of output device is
+          recommended.</p>
+        </details>
+        ```
+
+<br />
+
+### Handling
+`<details>` 요소의 상태가 열기와 닫기로 바뀔 때 발생하는 toggle 이벤트를 지원합니다. 이벤트는 상태가 변한 후 발생하며, `toggle` 이벤트 처리기를 부착해 위젯의 상태 변화를 감지할 수 있습니다.
+
+```javascript
+details.addEventListener("toggle", event => {
+  if (details.open) {
+    /* the element was toggled open */
+  } else {
+    /* the element was toggled closed */
+  }
+});
+```
 
 <br /><br />
 
 ## `<dialog>`
+닫을 수 있는 경고, 검사기, 창 등 대화 상자 및 기타 다른 상호작용 가능한 컴포넌트를 나타냅니다.
+> IE, Safari 지원 X 
 
-<br /><br />
+- `method="dialog"` 특성을 사용한 `<form>` 요소는 제출 시 대화 상자를 닫습니다. 이 때, 대화 상자의 [`returnValue`](https://developer.mozilla.org/ko/docs/Web/API/HTMLDialogElement/returnValue) 속성은 양식을 제출할 때 사용한 버튼의 `value`으로 설정됩니다.
+- CSS [`::backdrop`](https://developer.mozilla.org/ko/docs/Web/CSS/::backdrop) 의사 요소를 사용하면, [`HTMLDialogElement.showModal()`](https://developer.mozilla.org/ko/docs/Web/API/HTMLDialogElement/showModal) 메서드를 사용해 활성화한 `<dialog>` 요소의 뒤에 스타일을 적용할 수 있습니다. 예를 들면, 모달 대화 상자가 활성화되어 있는 동안 접근할 수 없는 뒤쪽 요소를 어둡게 만들 때 사용합니다.
+- 지원하지 않는 브라우저에서 `<dialog>`를 사용하려면 [`dialog-polyfill`](https://github.com/GoogleChrome/dialog-polyfill) 을 추가하세요.
 
-## `<menu>`
+<br />
 
-<br /><br />
-
-## `<summary>`
-
-<br /><br />
-
-## `<slot>`
+### 속성
+- `open` : 대화 상자가 활성 상태를 나타내며, `open` 특성이 없을 때 대화 상자가 사용자에게 보여서는 안됩니다.
+    
+    ```html
+    <dialog open>
+      <p>여러분 안녕하세요!</p>
+    </dialog>
+    ```
+  > 더 복잡한 [예제](https://developer.mozilla.org/ko/docs/Web/HTML/Element/dialog) 를 자바스트립트 동작과 함께 살펴보세요.
 
 <br /><br />
 
 ## `<template>`
+콘텐츠 조각을 나중에 사용하기 위해 담아놓는 컨테이너입니다. 페이지를 불러온 순간 렌더링되지 않고, 이후 JavaScript를 사용해 인스턴스를 생성할 수 있는 HTML 코드를 담을 방법을 제공합니다.
+> IE 지원 X
+
+- 읽기 전용 `content` 속성을 가집니다. `content`는 템플릿이 담고 있는 DOM 하위 트리를 나타내는 [DocumentFragment](https://developer.mozilla.org/ko/docs/Web/API/DocumentFragment) 입니다.
+
+<br />
+
+### 예제
+
+#### HTML
+
+```html
+<table id="producttable">
+  <thead>
+    <tr>
+      <td>UPC_Code</td>
+      <td>Product_Name</td>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 존재하는 데이터는 선택적으로 여기에 포함됩니다 -->
+  </tbody>
+</table>
+
+<template id="productrow">
+  <tr>
+    <td class="record"></td>
+    <td></td>
+  </tr>
+</template> 
+```
+템플릿을 정의합니다.
+
+#### JavaScript
+
+```javascript
+// 템플릿 엘리먼트의 컨텐츠 존재 유무를 통해
+// 브라우저가 HTML 템플릿 엘리먼트를 지원하는지 확인합니다
+if ('content' in document.createElement('template')) {
+
+    // 기존 HTML tbody 와 템플릿 열로 테이블을 인스턴스화합니다
+    var t = document.querySelector('#productrow');
+
+    // 새로운 열을 복제하고 테이블에 삽입합니다
+    var tb = document.querySelector("tbody");
+    var clone = document.importNode(t.content, true);
+    td = clone.querySelectorAll("td");
+    td[0].textContent = "1235646565";
+    td[1].textContent = "Stuff";
+
+    tb.appendChild(clone);
+
+    // 새로운 열을 복제하고 테이블에 삽입합니다
+    var clone2 = document.importNode(t.content, true);
+    td = clone2.querySelectorAll("td");
+    td[0].textContent = "0384928528";
+    td[1].textContent = "Acme Kidney Beans 2";
+
+    tb.appendChild(clone2);
+
+} else {
+  // HTML 템플릿 엘리먼트를 지원하지 않으므로
+  // 테이블에 열을 추가하는 다른 방법을 찾습니다.
+}
+```
+템플릿을 사용해 데이터를 테이블로 삽입합니다.
 
 <br /><br />
-
-
-
-
 
 ***
 ### _References_
