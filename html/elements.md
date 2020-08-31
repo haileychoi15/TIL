@@ -269,25 +269,20 @@
 - `<ol>`과 `<ul>`은 자식으로 `<li>`만 올 수 있습니다.
 - `<li>`는 단독으로 사용할 수 없습니다.
 - 항목의 순서를 바꿨을 때 의미도 바뀐다면 `<ol>`을 사용하세요. (단계별 요리법, 내비게이션, 영양정보에서 비율의 내림차순으로 정렬한 원재료 목록)
-- `<ul>` 요소에서 스타일적 요소의 넘버링이 필요하다면 CSS의 list-style 속성으로 제어할 수 있습니다.
+- `<ul>` 요소에서 스타일적 요소의 넘버링이 필요하다면 CSS의 `list-style` 속성으로 제어할 수 있습니다.
 
 <br />
 
-### 속성
-- `type` : 넘버링 타입 ()
-
+### `<ul>`/`<ol>` 속성
+- `type` : 넘버링 타입
     - `a` : lowercase letters
     - `A` : uppercase letters
     - `i` : lowercase Roman numerals
     - `I` : uppercase Roman numerals
-    - `1` : numbers (default)
-    
-        > `<li>` 태그에 별도로 `type` 속성을 명시하지 않으면 `<ol>` 태그의 `type` 속성이 적용됩니다. 
-
+    - `1` : numbers (기본값)
 - `reversed` : 역순 정렬 (Boolean)
 - `start` : 아이템에 넘버링을 할 때 첫 번째 순서를 나타내는 숫자
-
-     > type 값이 A와 같이 문자이더라도, start 속성 값은 3과 같이 숫자만 지정할 수 있습니다.
+    > `type` 값이 A와 같이 문자이더라도, `start` 속성 값은 `3`과 같이 숫자만 지정할 수 있습니다.
 
 <br />
 
@@ -304,11 +299,11 @@
 
 <br />
 
-### 속성
+### `<li>` 속성
 
 - `value` : `<ol>` 요소 내부에서 이 값에서부터 번호를 매깁니다. 숫자만 넣을수 있습니다. 
 
-> 부모 `<ol>` 요소에서 지정하는 유형을 덮어쓰는 `type` 속성은 사용이 중단됐습니다. 대신 CSS [list-style-type](https://developer.mozilla.org/ko/docs/Web/CSS/list-style-type) 속성을 사용하세요.
+    > 부모 `<ol>` 요소에서 지정하는 유형을 덮어쓰는 `type` 속성은 사용이 중단됐습니다. 대신 CSS [list-style-type](https://developer.mozilla.org/ko/docs/Web/CSS/list-style-type) 속성을 사용하세요.
 
 <br /><br />
 
@@ -1623,6 +1618,7 @@ It was a dark and stormy night...
 ### 속성
 - `open` : `<details>` 요소의 콘텐츠가 현재 보이는 상태인지 나타냅니다. (기본값 `false`)
     - `<details>`가 처음부터 열려있는 상태로 나타나게 하려면 `open` 속성을 지정하세요.
+    
         ```html
         <details open>
           <summary>System Requirements</summary>
