@@ -1315,19 +1315,19 @@ del::after {
 ### 속성
 
 속성 | 의미 | 값 | 기본값 | 특징
---- | --- | --- | --- | ---
-`accept` | 파일 유형 지정 | 예) `accept="image/*"`/`accept=".jpg,.png"` | 
+--- | ---- | --- | --- | ----
+`accept` | 파일 유형 지정 | 예) `image/*`/`.jpg,.png` | | 여러개 입력시 `,`로 구분
 `autocomplete` | 자동 완성 여부 | `on`/`off` | `on` | 
 `autofocus` | 페이지가 로드될 때 자동 포커스 | (Boolean) | | 
 `checked` | 컨트롤이 선택되었음을 표시 | (Boolean) | | `type` 속성 값이 `radio`/`checkbox`인 경우
-`dirname` | 텍스트 내용의 방향 | `ltr`/`rtl` | 입력 언어에 따라 자동 지정 | `type` 속성 값이 `text`/`search`인 경우
+`dirname` | 텍스트 내용의 방향 | `ltr`/`rtl` | 언어에 따라 자동 지정 | `type` 속성 값이 `text`/`search`인 경우
 `disabled` | 컨트롤을 비활성화 | (Boolean) | | 문서 내 고유
 `form` | `<form>`의 `id` 속성 값 | | | 해당 `<form>`의 후손이 아닐 경우 사용
 `list` | 참조할 `<datalist>`의 `id` 속성 값 | | | 
 `max` | 지정 가능한 최대 값 | (Number) | | `type` 속성 값이 `number`인 경우
 `min` | 지정 가능한 최소 값 | (Number) | | `type` 속성 값이 `number`인 경우
 `maxlength` | 입력 가능한 최대 문자 수 | (Number) | `524288` | `type` 속성 값이 `text`/`email`/`password`/`tel`/`url`인 경우
-`multiple` | 둘 이상의 값을 입력 할 수 있는지 여부 | (Boolean) | `type` 속성 값이 `email`/`file`인 경우 (`email`은 `,`로 구분)
+`multiple` | 둘 이상의 값을 입력 할 수 있는지 여부 | (Boolean) | |  `type` 속성 값이 `email`/`file`인 경우 (`email`은 `,`로 구분)
 `name` | 컨트롤 이름 | | | 
 `placeholder` | 사용자가 입력할 값의 힌트 | | | `type` 속성 값이 `text`/`search`/`tel`/`url`/`email`인 경우
 `readonly` | 읽기 전용 | (Boolean) | | 
@@ -1338,7 +1338,7 @@ del::after {
 `value` | 컨트롤의 초기 값 | | | 
 `required` | 필수 입력 여부| (Boolean) | |
 `pattern` | 요구되는 정규식 | [(RegExp)](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | | `title` 속성을 사용해 패턴 요구사항 설명
-`size` | 컨트롤의 사이즈 | | | `type` 속성 값이 `password`/`text`인 경우, 문자 수를 의미 <br /> `type` 속성 값이 `email`/`tel`인 경우, CSS `width`를 의미 (`size`보다 CSS `width`가 우선 적용)
+`size` | 컨트롤의 사이즈 (CSS `width`를 의미 ) | | | `type` 속성 값이 `password`/`text`/`email`/`tel`인 경우 (`size`보다 CSS `width`가 우선 적용)
 
 `<input />` 요소의 다양한 예제와 속성을 [MDN 문서](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Input) 에서 살펴보세요.
 
