@@ -1277,7 +1277,70 @@ del::after {
 
 ## `<input />`
 사용자의 데이터를 받을 수 있는 대화형 컨트롤을 생성합니다.
-`<input />` 요소는 [여기](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Input)에서 확인해주세요.
+
+- `<input />` 요소의 동작 방식은 `type` 속성(유형)에 따라 현격히 달라집니다.
+-  기본값은 `text`입니다.
+
+<br />
+
+### 유형  
+
+유형 | 데이터 종류 | 특징
+--- | --- | ---
+`button` | 일반 버튼 | `<button>`처럼 사용
+`checkbox` | 체크박스 |
+`color` | 색상 | IE 지원 X
+`date` | 날짜 | 
+`datetime-local` | 날짜와 시간
+`email` | 이메일 | 유효성 검증 매개변수가 존재
+`file` | 파일 | `accept` 속성으로 허용하는 파일 유형을 지정
+`hidden` | 보이지 않지만 전송할 양식 |
+`image` | 이미지 제출 버튼 | `<img />`처럼 사용
+`month` | 연도,월 | 
+`number` | 숫자 |
+`password` | 비밀 | 가려지는 양식
+`radio` | 라디오 버튼 | 같은 `name` 속성 그룹 내 하나만 선택 가능
+`range` | 범위 컨트롤 | `min`, `max`, `step`, `value`(기본값) 속성 사용
+`reset` | 초기화 | 권장 X
+`search` | 검색 | <button>처럼 사용
+`submit` | 제출 버튼 | 해당 `<form>` 범위 내 고유한 양식
+`tel` | 전화번호 |
+`text` | 일반 텍스트 |
+`time` | 시간 |
+`url` | 절대 URL | 검증 매개변수 존재
+`week` | 주를 구성하는 날짜 |
+
+<br />
+
+### 속성
+
+속성 | 의미 | 값 | 기본값 | 특징
+--- | --- | --- | --- | ---
+`accept` | 파일 유형 지정 | 예) `accept="image/*"`/`accept=".jpg,.png"` | 
+`autocomplete` | 자동 완성 여부 | `on`/`off` | `on` | 
+`autofocus` | 페이지가 로드될 때 자동 포커스 | (Boolean) | | 
+`checked` | 컨트롤이 선택되었음을 표시 | (Boolean) | | `type` 속성 값이 `radio`/`checkbox`인 경우
+`dirname` | 텍스트 내용의 방향 | `ltr`/`rtl` | 입력 언어에 따라 자동 지정 | `type` 속성 값이 `text`/`search`인 경우
+`disabled` | 컨트롤을 비활성화 | (Boolean) | | 문서 내 고유
+`form` | `<form>`의 `id` 속성 값 | | | 해당 `<form>`의 후손이 아닐 경우 사용
+`list` | 참조할 `<datalist>`의 `id` 속성 값 | | | 
+`max` | 지정 가능한 최대 값 | (Number) | | `type` 속성 값이 `number`인 경우
+`min` | 지정 가능한 최소 값 | (Number) | | `type` 속성 값이 `number`인 경우
+`maxlength` | 입력 가능한 최대 문자 수 | (Number) | `524288` | `type` 속성 값이 `text`/`email`/`password`/`tel`/`url`인 경우
+`multiple` | 둘 이상의 값을 입력 할 수 있는지 여부 | (Boolean) | `type` 속성 값이 `email`/`file`인 경우 (`email`은 `,`로 구분)
+`name` | 컨트롤 이름 | | | 
+`placeholder` | 사용자가 입력할 값의 힌트 | | | `type` 속성 값이 `text`/`search`/`tel`/`url`/`email`인 경우
+`readonly` | 읽기 전용 | (Boolean) | | 
+`step` | 숫자의 증감 간격 | (Number) | `1` | `type` 속성 값이 `number`/`range`인 경우
+`src` | 이미지의 URL | URL | | `type` 속성 값이 `image`인 경우
+`alt` | 이미지의 대체 텍스트 | | | `type` 속성 값이 `image`인 경우
+`type` | 입력 받을 데이터의 종류 | [별도 정리](#유형) | `text` | 
+`value` | 컨트롤의 초기 값 | | | 
+`required` | 필수 입력 여부| (Boolean) | |
+`pattern` | 요구되는 정규식 | [(RegExp)](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | | `title` 속성을 사용해 패턴 요구사항 설명
+`size` | 컨트롤의 사이즈 | | | `type` 속성 값이 `password`/`text`인 경우, 문자 수를 의미 <br /> `type` 속성 값이 `email`/`tel`인 경우, CSS `width`를 의미 (`size`보다 CSS `width`가 우선 적용)
+
+`<input />` 요소의 다양한 예제와 속성을 [MDN 문서](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Input) 에서 살펴보세요.
 
 <br /><br />
 
@@ -1742,3 +1805,4 @@ if ('content' in document.createElement('template')) {
 ### _References_
 - [HTML elements reference | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 - [한눈에 보는 HTML 요소(Elements & Attributes) 총정리 | HEROPY Tech](https://heropy.blog/2019/05/26/html-elements/)
+- [HTML+CSS 기초 강의 - 18. 폼만들기 기초 7 - <input> 태그 고급 속성 | 어포스트](https://apost.kr/86)
