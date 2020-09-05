@@ -107,7 +107,7 @@ console.log(str); // '0123455678'
 ```
 
 ```javascript
-var i = 0;
+let i = 0;
 
 for (;;) {
   if (i > 3) break;
@@ -233,7 +233,7 @@ for (variable in object) { ... }
 
 #### 예제
 ```javascript
-var object = {a: 1, b: 2, c: 3};
+let object = {a: 1, b: 2, c: 3};
     
 for (const key in object) {
   console.log(`object.${key} = ${object[key]}`);
@@ -416,8 +416,8 @@ array.splice(start, deleteCount, item1, item2, ... )
 
 하나도 제거하지 않고, 2번 인덱스에 `'drum'`을 추가합니다.
 ```javascript
-var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
-var removed = myFish.splice(2, 0, 'drum');
+let myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+let removed = myFish.splice(2, 0, 'drum');
 
 // myFish is ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'] 
 // removed is [], no elements removed
@@ -425,8 +425,8 @@ var removed = myFish.splice(2, 0, 'drum');
 
 3번 인덱스에서 두 개 요소를 제거합니다.
 ```javascript
-var myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
-var removed = myFish.splice(3, 2);
+let myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
+let removed = myFish.splice(3, 2);
 
 // removed is ['mandarin', 'sturgeon']
 // myFish is ['angel', 'clown', 'drum'] 
@@ -467,6 +467,178 @@ let citrus = fruits.slice(2, -1)
 // fruits contains ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
 // citrus contains ['Lemon', 'Apple']
 ```
+
+<br /><br />
+
+### `shift()`/`pop()`
+`shift()`는 배열에서 첫 번째 요소를, `pop()`은 마지막 요소를 제거하고 제거된 요소를 반환합니다. 이 때, 원래 배열의 길이를 변하게 합니다.
+
+```javascript
+array.shift();
+
+array.pop();
+```
+> 배열의 길이가 `0`이라면 `undefined`를 리턴 합니다.
+
+<br />
+
+#### 예제
+`shift()` 메서드는 while 문의 조건으로 사용되기도 합니다.
+```javascript
+let names = ['Andrew', 'Edward', 'Paul', 'Chris' ,'John'];
+
+while( (i = names.shift()) !== undefined ) {
+    console.log(i);
+}
+
+// Andrew, Edward, Paul, Chris, John
+```
+
+<br /><br />
+
+### `unshift()`/`push()`
+`unshift()`는 새로운 요소를 배열의 맨 앞쪽에 추가하고, `push()`는 배열의 마지막에 추가하며 배열의 새로운 길이(추가하는 요소의 개수)를 반환합니다.
+
+```javascript
+array.unshift(element1, element2, ...);
+
+array.push(element1, element2, ...);
+```
+- `element1`/`element2` : 배열에 추가할 요소 
+
+<br />
+
+#### 예제
+
+```javascript
+let sports = ['축구', '야구'];
+let total = sports.push('미식축구', '수영');
+
+console.log(sports); // ['축구', '야구', '미식축구', '수영']
+console.log(total);  // 4
+```
+
+두 개의 배열을 합치고 싶을 때는 어떤 방법이 좋을까요? 이 때에는 두번째 배열의 모든 엘리먼트를 `push` 하기 위해 `apply()`를 사용할 수 있습니다.
+```javascript
+var vegetables = ['설탕당근', '감자'];
+var moreVegs = ['셀러리', '홍당무'];
+
+Array.prototype.push.apply(vegetables, moreVegs); // 기존 배열, 추가할 배열
+
+console.log(vegetables); // ['설탕당근', '감자', '셀러리', '홍당무']
+```
+
+> 주의할 점 : 추가할 배열의 길이가 아주 클 경우 `apply()`를 쓸 수 없습니다. JavaScript 엔진의 인수 길이 제한 때문입니다. 엔진마다 함수가 받을 수 있는 인수의 개수는 다르지만, JavaScriptCore의 경우 인수의 개수 제한은 `65536`입니다.
+
+> 두 개의 배열을 합치는 방법은 `concat()`을 사용할 수도 있습니다. 
+
+<br /><br />
+
+### `concat()`
+인자로 주어진 배열이나 값들을 기존 배열에 합쳐서 새 배열을 반환합니다. 기존배열을 변경하지 않습니다.  
+
+```javascript
+array.concat(value1, value2, ...);
+```
+- `value`(optional) : 기존 배열에 합쳐질 배열 또는 값
+
+> 인자를 생략하면 기존 배열의 얕은 복사본을 반환합니다.
+
+<br />
+
+#### 예제
+```javascript
+const num1 = [1, 2, 3];
+const num2 = [4, 5, 6]; 
+const num3 = [7, 8, 9];
+
+const result = num1.concat(num2, num3);
+
+console.log(result); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+```javascript
+const alpha = ['a', 'b', 'c'];
+
+const result = alpha.concat(1, [2, 3]);
+
+console.log(result); // ['a', 'b', 'c', 1, 2, 3]
+```
+
+<br /><br />
+
+### `reduce()`
+배열의 각 요소에 대해 주어진 리듀서(reducer) 함수를 실행하고, 하나의 결과값을 반환합니다.
+
+```javascript
+const callback = (accumulator, currentValue, currentIndex, array) => {    
+    return returnValue;
+};
+
+array.reduce(callback, initialValue);
+```
+`callback` 함수는 네 개의 인자를 가집니다.
+- `accumulator` : 콜백의 반환값을 누적한 값
+- `currentValue` : 처리할 현재 요소
+- `currentIndex`(optional) : 처리할 현재 요소의 인덱스
+    - `initialValue`를 제공한 경우 : `0`부터 시작
+    - 제공하지 않은 경우 : `1`부터 시작
+- `array`(optional) : reduce()를 호출한 배열
+
+`initialValue`(optional)는 최초 호출에서 첫 번째 인수에 제공하는 값입니다. 초기값을 생략하면 배열의 첫번째 요소가 초기값이 됩니다.
+> 빈 배열에서 초기값 없이 `reduce()`를 호출하면 [TypeError](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypeError) 가 발생합니다.
+
+<br />
+
+#### 예제1
+여기 하나의 배열이 있습니다. 
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+```
+
+`reduce()`를 사용해 배열 안의 모든 원소를 더해봅니다.
+```javascript
+const sum = numbers.reduce((accumulator, current) => accumulator + current, 0);
+console.log(sum); // 15
+```
+
+같은 배열을 가지고 평균을 구해봅니다.
+```javascript
+const avg = numbers.reduce((accumulator, current, index, array) => {
+
+    if(index === array.length - 1){ // 배열의 마지막 원소일 때
+        return (accumulator + current) / array.length;
+    }
+    return accumulator + current;
+
+}, 0);
+
+console.log(avg); // 3
+```
+<br />
+
+#### 예제2
+하나의 배열에 똑같은 값이 몇 번씩 들어가 있는지 알아봅니다.
+
+```javascript
+const alphabets = ['a', 'a', 'a', 'b', 'c', 'c', 'd', 'e'];
+
+const counts = alphabets.reduce((acc, current) => {
+
+    if(acc[current]) { // 누적된 객체 acc에 current 라는 키값이 존재한다면
+        acc[current] += 1;
+    }
+    else{
+        acc[current] = 1;
+    }   
+
+}, {}) // 초기값은 비어있는 객체입니다. 
+
+console.log(counts); // Object {a: 3, b: 1, c: 2, d: 1, e: 1}
+```
+
+<br /><br />
+
 ***
 ### _References_
 [Loops and iteration | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration)
@@ -479,3 +651,8 @@ let citrus = fruits.slice(2, -1)
 [A JavaScript Optional Argument Hazard | Allen Wirfs-Brock](http://www.wirfs-brock.com/allen/posts/166)
 [Array.prototype.splice() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
 [Array.prototype.slice() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+[Array.prototype.shift() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/shift)
+[Array.prototype.pop() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)
+[Array.prototype.unshift() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift)
+[Array.prototype.push() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
+[Function.prototype.apply() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
