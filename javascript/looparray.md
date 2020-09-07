@@ -1,5 +1,7 @@
-# 반복문(Loop)과 배열(Array)
+# 반복문(Loop statement)과 배열(Array)
 자바스크립트의 반복문의 종류와 배열의 여러 속성들을 다루고 있는 문서입니다.
+- [반복문(Loop Statement)](#반복문loopstatement)
+- [배열 내장 매서드(Methods)](#배열내장매서드methods)
 
 <br />
 
@@ -167,7 +169,7 @@ for (const key in object) {
 
 <br /><br />
 
-## 배열 내장 매서드(methods)
+## 배열 내장 매서드(Methods)
 - `from()`
 - `isArray()`
 - `of()`
