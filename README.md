@@ -13,6 +13,7 @@
 
 ## JavaScript
 - [자료형(Data types)](https://github.com/haileychoi15/TIL/blob/master/javascript/type.md)
+- [스코프(Scope)](https://github.com/haileychoi15/TIL/blob/master/javascript/scope.md)
 - [호이스팅(Hoisting)](https://github.com/haileychoi15/TIL/blob/master/javascript/hoisting.md)
 - [프로토타입(Prototype)과 클래스(Class)](https://github.com/haileychoi15/TIL/blob/master/javascript/prototype.md)
 - [표현식(Expressions)](https://github.com/haileychoi15/TIL/blob/master/javascript/expressions.md)
