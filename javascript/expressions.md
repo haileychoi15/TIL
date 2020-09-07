@@ -1,12 +1,12 @@
 # 표현식(Expressions)
-자주쓰이는 자바스트립트의 표현식들과 개념을 정리하고 있는 문서입니다.
+자주 쓰이는 자바스트립트의 표현식들과 개념을 정리하고 있는 문서입니다.
 
-- [단축 평가 논리 계산법](#단축평가논리계산법)
-- [비구조화 할당(Destructuring assignment)](#비구조화할당)
+- [단축 평가 논리 계산법](#단축-평가-논리-계산법)
+- [비구조화 할당(Destructuring assignment)](#비구조화-할당)
 - [`getter`/`setter`](#gettersetter)
 - [`spread` 구문](#spread)
 - [`rest` 파라미터](#rest)
-- [객체(Object) 안의 함수(Fuction)](#객체object안의함수function)
+- [객체(Object) 안의 함수(Fuction)](#객체object-안의-함수fuction)
 
 <br />
 
@@ -374,6 +374,6 @@ TypeError: Cannot read property 'sound' of undefined
 ***
 ### _References_
 
-[Destructuring assignment | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-[Spread syntax (...) | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+[Destructuring assignment | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) <br />
+[Spread syntax &#40;...&#41; | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) <br />
 [Rest parameters | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
