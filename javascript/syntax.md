@@ -181,7 +181,7 @@ for (const key in object) {
 - `flat()`
 - `flatMap()`
 - [`forEach()`](#foreach)
-- `includes()`
+- [`includes()`](#includes)
 - `indexOf()`
 - `join()`
 - `keys()`
@@ -346,6 +346,52 @@ const filterItems = (query) => {
 console.log(filterItems('ap')); // ['apple', 'grapes']
 console.log(filterItems('an')); // ['banana', 'mango', 'orange']
 ```
+
+<br /><br />
+
+### `includes()`
+배열이 특정 요소를 포함하고 있는지 판별합니다. Boolean 값을 반환 합니다.
+> IE 지원 X
+
+```javascript
+array.includes(value, index);
+```
+- `value` : 탐색할 요소
+- `index`(optional) : 배열에서 검색을 시작할 위치 (기본값 `0`)
+
+> 문자나 문자열을 비교할 때, `includes()`는 대소문자를 구분합니다.
+
+<br />
+
+#### 예제
+```javascript
+
+const isAnimal = (text) => {
+  const animals = ['고양이', '개', '거북이', '토끼'];
+  return animals.includes(text);
+}
+
+console.log(isAnimal('개')); // true
+console.log(isAnimal('사슴')); // false
+```
+찾는 값이 있으면 `true`, 없으면 `false`를 반환합니다.
+
+만약에 배열이 아닌 어떠한 값에 따른 value를 찾고 싶다면요? 이때는 아래의 예시처럼 객체를 사용해보세요.
+```javascript
+const getSound = (animal) => {
+  const sounds = {
+    개: '멍멍',
+    고양이: '야옹',
+    참새: '짹짹',
+    비둘기: '구구구'  
+  };
+  return sounds[animal] || '해당하는 소리가 없습니다.'    
+}
+
+console.log(getSound('개')); // 멍멍
+console.log(getSound('여우')); // 해당하는 소리가 없습니다.
+```
+
 
 <br /><br />
 
@@ -610,3 +656,4 @@ console.log(counts); // Object {a: 3, b: 1, c: 2, d: 1, e: 1}
 [Function.prototype.apply() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 [Array.prototype.concat() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
 [Array.prototype.reduce() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+[Array.prototype.includes() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)

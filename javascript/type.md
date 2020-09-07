@@ -28,7 +28,7 @@ Boolean context에서 `false`로 평가되는 자료형들 입니다.
 
 > 위의 값들을 제외한 모든 값은 Truthy value 입니다.
 
-
+<br /><br />
 
 ***
 ### _References_

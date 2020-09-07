@@ -1,7 +1,8 @@
-# 개념사전
-알아두면 좋은 여러 개념들을 정리하고 있습니다. 
+# 표현식(Expressions)
+자주쓰이는 자바스트립트의 표현식들과 개념을 정리하고 있는 문서입니다.
+
 - 단축 평가 논리 계산법
-- 비구조화 할당
+- 비구조화 할당(Destructuring assignment)
 - `getter`/`setter`
 
 <br />
@@ -57,9 +58,10 @@ console.log(name); // 이름이 없는 동물입니다.
 <br /><br />
 
 ## 비구조화 할당
+배열이나 객체에서 어떤 값을 분해해 할당할지 정의합니다.
 
-### 객체 비구조화 할당
-
+### 객체 예제
+객체에서 이루어지는 비구조화 할당입니다.
 ```javascript
 const ironMan = {
   name: '토니스타크',
@@ -83,7 +85,82 @@ print(ironMan); // 아이언맨(토니스타크) 역할을 맡은 배우는 로�
 print(catainAmerica); // 캡틴아메리카(스티븐 로저스) 역할을 맡은 배우는 크리스 에반스입니다.
 ```
 
+<br />
+
+비구조화 할당을 사용할 때 이름을 바꿀 수 있습니다. 
+```javascript
+const animal = {
+  name: '멍멍이',
+  type: '개'
+}
+
+const { name: nickname } = animal;
+// const nickname = animal.name; 이렇게 사용하는 것과 동일합니다.
+
+console.log(nickname);
+```
+기존 객체는 `name`을 그대로 유지합니다.
+
+<br />
+
+객체의 깊속한 곳에서 값을 꺼내어 할당 할 수 있습니다.
+```javascript
+const deepObject = {
+  state: {
+    information: {
+      name: 'velopert',
+      languages: ['korean', 'english', 'arabic']
+    }
+  },
+  value: 5
+}
+
+// 키 값이 name, languages, value인 값들을 비구조화 할당 하고자 합니다.
+const { name, languages: [firstLang, secondLang] } = deepObject.state.information;
+const { value } = deepObject;
+
+// 비구조화 할당을 한 값들을 가지고 새로운 객체를 선언합니다.
+const extracted = {
+  name, // name: name,
+  firstLang, // firstLang: firstLang,
+  secondLang, // secondLang: secondLang,
+  value // value: value
+};
+
+console.log(extracted);
+// Object {name: "velopert", firstLang: "korean", secondLang: "english", value : 5}
+```
+위의 코드를 보면 `extracted` 객체를 선언할 때, `key`값에 따른 `value`값을 생략했습니다. 특정 `key` 이름으로 선언된 값이 이미 존재한다면, `value` 값 설정을 생략할 수 있습니다.
+
+<br />
+
+### 배열 예제
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+
+const [one, two] = array; // 배열의 좌측부터 할당합니다.
+
+console.log(one); // 1
+console.log(two); // 2
+```
+<br />
+
+객체 비구조화 할당처럼 기본값을 지정할 수 있습니다.
+```javascript
+const array = [1];
+
+const [one, two = 3] = array;
+
+console.log(one); // 1
+console.log(two); // 3
+```
+
 <br /><br />
+
+
+
+
 
 ### 객체 안의 함수
 
