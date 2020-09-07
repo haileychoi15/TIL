@@ -373,7 +373,6 @@ TypeError: Cannot read property 'sound' of undefined
 
 ***
 ### _References_
-
 [Destructuring assignment | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) <br />
 [Spread syntax &#40;...&#41; | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) <br />
 [Rest parameters | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
