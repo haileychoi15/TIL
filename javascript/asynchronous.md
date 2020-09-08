@@ -474,9 +474,22 @@ process();
 ```
 `Promise.all`은 각각의 `promise`가 처리되는 시간은 다르지만 제일 마지막으로 작업이 끝나는 `promise` 기준으로, 모든 `promise`가 이행된 이후에 결과값들을 배열에 담아 반환합니다.
 
+<br /><br />
+
+## `Promise.race()`
+인자로 주어진 등록된 `promise` 중 가장 먼저 완료된 `promise`의 결과값만 반환됩니다. `Promise.all()`와 문법이 같습니다.
+
 <br />
 
-`Promise.race`를 쓰게 되면 등록된 `promise` 중 가장 따른 `promise`의 결과값만 반환됩니다. 그렇다면 `process()`을 호출하는 부분의 코드가 이렇게 바뀌겠네요.
+### 특징
+
+- `Promise` 객체를 반환합니다.
+- 전달받은 iterable이 비어 있을 경우, 반환한 프로미스는 영원히 대기 상태가 됩니다.
+
+<br />
+
+### 예제
+`Promise.all()`의 예제에서 `process()`을 호출하는 부분의 코드를 `promise.race()`를 사용해서 바꿔보겠습니다.
 
 ```javascript
 async function process() {
@@ -499,3 +512,5 @@ process();
 [자바스크립트 비동기 처리와 콜백 함수 | Captain Pangyo](https://joshua1988.github.io/web-development/javascript/javascript-asynchronous-operation/) <br />
 [자바스크립트 Promise 쉽게 이해하기 | Captain Pangyo](https://joshua1988.github.io/web-development/javascript/promise-for-beginners/) <br />
 [자바스크립트 async와 await | Captain Pangyo](https://joshua1988.github.io/web-development/javascript/js-async-await/) <br />
+[Promise.all() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) <br />
+[Promise.race() | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/race)
