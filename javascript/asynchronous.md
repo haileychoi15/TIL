@@ -4,10 +4,13 @@
 <img width="500" alt="스크린샷 2020-09-08 오후 5 41 19" src="https://user-images.githubusercontent.com/60546778/92453845-b8a28c80-f1fa-11ea-97c1-129e115c8477.png">
 
 <br />
-<br />
 
 - `ajax` 통신
 - `setTimeout()`
+
+<br />
+
+## 예제
 
 ```javascript
 function work() {
@@ -463,11 +466,14 @@ const getTurtle = async () => {
 }
 
 async function process() {
-  const [dog, rabbit, turtle] = await Promise.all([getDog(), getRabbit(), getTurtle()]);   
-
-  console.log(dog); // 멍멍이
-  console.log(rabbit); // 토끼
-  console.log(turtle); // 거북이
+  try{
+    const [dog, rabbit, turtle] = await Promise.all([getDog(), getRabbit(), getTurtle()]);
+    console.log(dog); // 멍멍이
+    console.log(rabbit); // 토끼
+    console.log(turtle); // 거북이
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 process();
@@ -485,6 +491,7 @@ process();
 
 - `Promise` 객체를 반환합니다.
 - 전달받은 iterable이 비어 있을 경우, 반환한 프로미스는 영원히 대기 상태가 됩니다.
+- 가장 먼저 완료된 `promise`에서 오류가 발생하지 않는다면, 그 이후에 완료되는 `promise`에서 오류가 나도 영향을 미치지 않습니다.
 
 <br />
 
@@ -493,9 +500,12 @@ process();
 
 ```javascript
 async function process() {
-  const first = await Promise.all(getDog(), getRabbit(), getTurtle());   
-
-  console.log(first); // 토끼
+  try{
+    const first = await Promise.all(getDog(), getRabbit(), getTurtle());   
+    console.log(first); // 토끼
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 process();
