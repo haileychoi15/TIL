@@ -3,8 +3,6 @@
 
 <img width="500" alt="스크린샷 2020-09-08 오후 5 41 19" src="https://user-images.githubusercontent.com/60546778/92453845-b8a28c80-f1fa-11ea-97c1-129e115c8477.png">
 
-<br />
-
 - `ajax` 통신
 - `setTimeout()`
 
