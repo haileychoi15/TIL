@@ -6,6 +6,7 @@
 - Props
 - State
 - Lists and Keys
+- DOM
 - 배포하는 법
 
 <br />
@@ -457,6 +458,26 @@ Warning: Each child in a list should have a unique "key" prop.
 lists.push(<li key={data[i].id}>{data[i].title}</li>);
 ```
 위의 코드처럼 list를 자동 생성해주는 코드에 key props를 넣어주면 됩니다.
+
+<br /><br />
+
+## DOM
+
+### useref()
+```jsx
+import React, { useref } from 'react';
+```
+`useref()` 사용을 선언합니다.
+
+```jsx
+const 이름 = useref(); 
+```
+객체를 생성합니다.
+
+```jsx
+ref = {이름}
+```
+선택하고자 하는 돔(DOM)의 속성으로 설정합니다.
 
 <br /><br />
 
