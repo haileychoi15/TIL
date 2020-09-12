@@ -128,6 +128,19 @@ function App() {
 }
 ```
 
+- 이벤트를 등록할 때 발생할 이벤트의 종류는 camelCase로 작성해야 합니다.
+- 이벤트를 등록할 때 함수를 호출하는 코드를 작성하면 안됩니다.
+
+```jsx
+function Counter() {
+  const onIncrease = () => {
+    console.log('+1');
+  }
+  return <button onClick={onIncrease}>+1</button>; /* onClick={onIncrease()} 을 사용하면 JS가 랜더링 될 때 함수가 호출됩니다. */
+
+}
+```
+
 <br /><br />
 
 ## Props
@@ -140,15 +153,18 @@ function App() {
     <Hello name="react" color="red">
   );
 }
-
+```
+```jsx
 // Hello.js
 function Hello(props) { 
+
   console.log(props); /* {name: "react"} */
+
   return <div style={{color: props.color}}>hello, {props.name}!</div>
   /* style 에서 바깥 {  }는 내부에 JS 값을 넣어주기 위한 문법이며, 내부 { }는 객체를 의미합니다. */
 }
 ```
-위의 코드를 구조 분해 할당을 사용하려면 더욱 간결해집니다.
+Hello.js의 코드를 구조 분해 할당을 사용하려면 더욱 간결해집니다.
 
 ```jsx
 // Hello.js
@@ -170,7 +186,8 @@ function App() {
     </>
   );
 }
-
+```
+```jsx
 // Hello.js
 function Hello({ color, name }) {
   return <div style={{color}}>hello, {name}!</div>
@@ -195,7 +212,8 @@ function App() {
     </Wrapper>
   );
 }
-
+```
+```jsx
 // Wrapper.js
 function Wrapper({ children }) {  /* children을 사용해 랜더링하고자하는 컴포넌트를 추출해옵니다. */
   const style = {
@@ -212,6 +230,8 @@ function Wrapper({ children }) {  /* children을 사용해 랜더링하고자하
 <br />
 
 ### 조건부 랜더링
+`isSpecial` 이라는 props 의 값(`true`/`false`)에 따라 Hello.js 에서 `***`을 랜더링하거나 랜더링하지 않습니다.
+
 ```jsx
 // App.js
 function App() { 
@@ -222,16 +242,15 @@ function App() {
     </Wrapper>
   );
 }
-
+```
+```jsx
 // Hello.js
 function Hello({ color, name, isSpecial }) {
   return (
     <div style={{
       color
     }}>
-      {isSpecial && <b>***</b>} 
-      {/* AND 연산자를 통해 isSpecial이 false일 때 아무것도 랜더링하지 않습니다. */}
-      {/* {isSpecial ? <b>***</b> : null}와 같은 방법입니다. */}
+      {isSpecial && <b>***</b>} {/* {isSpecial ? <b>***</b> : null}와 같은 방법입니다. */}
       hello, {name}!
     </div>
   );
@@ -242,7 +261,7 @@ function Hello({ color, name, isSpecial }) {
 <br /><br />
 
 ## State
-
+컴포넌트에서 동적인 값을 상태(state)라고 부릅니다.
 state 는 props 와 비슷하지만, 프라이빗하고 컴포넌트에 의해 완전히 controll 된다는 특징이 있습니다. 그렇다면 왜 state를 사용할까요?
 state 를 사용하면 앱 외부에서 컴포넌트를 실행시킬 때 컴포넌트의 state 값이 있는지 없는지 알 수 없습니다. state는 오로지 앱 내부에서 사용됩니다. 즉, 사용자가 알 필요가 없는 정보를 외부로부터 은닉시킬 수 있습니다.
 state 를 사용하기 위해서는 컴포넌트의 state를 초기화 하는 클래스 생성자를 추가하면 됩니다.
@@ -279,16 +298,131 @@ ReactDOM.render(
 
 <br />
 
-### State 동적으로 바꾸기
+### setState()
+props는 읽기만 가능합니다. 직접적으로 값을 바꿀 수 없습니다. 동적인 변화를 위해서는 `setState()`를 사용해야 합니다.
 ```jsx
 this.setState({
-  value: 'welcome';
+  value: '0';
 });
 ```
-`setState()`를 사용합니다. 아래의 방법처럼 쓰지 않도록 주의해주세요.
+아래의 방법처럼 쓰지 않도록 주의해주세요.
 ```jsx
-this.state.value = 'welcome' // 옳지 못한 문법;
+this.state.value = '0' // 옳지 않은 문법;
 ```
+
+<br />
+
+### useState()
+컴포넌트에서 상태를 관리 할 수 있습니다.
+
+```jsx
+const [원소1, 원소2] = useState(기본값);
+```
+- 초기값 : 상태의 기본값을 파라미터로 넣어서 함수 호출
+- 원소1 : 현재 상태
+- 원소2 : 원소1의 상태를 바꾸는 Setter 함수
+
+<br />
+
+> 위의 코드는 아래의 코드를 구조 분해 할당한 것입니다.
+```jsx
+const array = useState(기본값);
+const 원소1 = array[0];
+const 원소2 = array[1];
+```
+
+<br />
+
+#### 예제
+`+1`과 `-1` 두 버튼에 따라 기본값 `0`이 동적으로 바뀌는 예제입니다. 아래의 코드는 `useState()`을 사용하지 않은 코드입니다.
+
+```jsx
+// App.js
+function App() {
+  return (
+    <Counter></Counter>
+  );
+}
+```
+```jsx
+// Counter.js
+function Counter() {
+  const onIncrease = () => {
+    console.log('+1');
+  }
+  const onDecrease = () => {
+    console.log('-1');
+  }
+  return (
+    <div>
+      <h1>0</h1>
+      <button onClick={onIncrease}>+1</button>
+      <button onClick={onDecrease}>-1</button>
+    </div>
+  );
+}
+```
+`Counter()`에 이벤트를 등록합니다. 위의 예제에서 버튼을 누르면 동적인 변화를 나타내기 위해서 `useState()`를 사용합니다. `useState()`를 사용하기 위해서, 아래와 같은 과정을 거칩니다.
+
+```jsx
+import React, { useState } from 'react';
+```
+리액트 패키지에서 `useState()`을 불러옵니다.
+
+```jsx
+const [number, setNumber] = useState(0);
+```
+`useState()`을 호출합니다.
+
+Setter 함수는 파라미터로 전달 받은 값을 최신 상태로 설정해줍니다.
+```jsx
+const onIncrease = () => {
+    setNumber(number + 1); /* 컴포넌트 최적화를 위해 함수형 업데이트(callback)를 사용할 수 있습니다. */
+  }
+
+  const onDecrease = () => {
+    setNumber(number - 1); 
+  }
+```
+Setter 함수의 결과를 `{number}`을 통해 보여줍니다.
+
+<br />
+
+이제 위의 과정을 거친 코드는 이렇게 됩니다.
+
+```jsx
+// Counter.js
+import React, { useState } from 'react';
+
+function Counter() {
+  const [number, setNumber] = useState(0);
+
+  const onIncrease = () => {
+    setNumber(number + 1); 
+  }
+
+  const onDecrease = () => {
+    setNumber(number - 1);
+  }
+
+  return (
+    <div>
+      <h1>{number}</h1>
+      <button onClick={onIncrease}>+1</button>
+      <button onClick={onDecrease}>-1</button>
+    </div>
+  );
+}
+```
+
+
+
+
+
+
+
+
+
 
 <br /><br />
 
