@@ -1,13 +1,29 @@
 # React
-> `yarn` 을 사용하고 있습니다. `yarn`이 없다면, `npm`을 사용하시면 됩니다. 사용방법은 동일합니다.
 
 <br />
 
 ## 1. 개발 환경 준비
+> `yarn` 을 사용하고 있습니다. `yarn`이 없다면, `npm`을 사용하시면 됩니다. 사용방법은 동일합니다.
 
 <br />
 
 ## 2. JS, CSS 코딩하는 법
+### CSS 불러오기
+```jsx
+import 'CSS 파일 위치';
+```
+
+### 컴포넌트 불러오기
+```jsx
+function 컴포넌트명() {
+    return // JSX 구현 .. ;
+}
+```
+
+### 내보내기
+```jsx
+export default 컴포넌트명;
+```
 
 <br />
 
@@ -48,7 +64,9 @@ npx serve -s build
 <br /><br />
 
 ## Components
+컴포넌트는 일종의 UI 조각이라고 할 수 있습니다.
 
+### 클래스형
 ```jsx
 class 컴포넌트명 extends Component {
   render () {
@@ -96,13 +114,44 @@ export default 컴포넌트명
 
 #### How to import component 
 ```jsx
-import 컴포넌트명 from "가져올 컴포넌트 위치" ;
+import 컴포넌트명 from '가져올 컴포넌트 위치' ;
 ```
+파일의 위치를 지정할때는 확장자를 생략할 수 있습니다.
 
 <br /><br />
 
 ## JSX
-JSX 로 코드를 작성하면 `create-react-app`이 JS로 converting 해줍니다. 
+JSX을 사용하여 XML 형태로 선언을 하면, `create-react-app`이 JS로 변환해줍니다. 
+
+### 문법
+- 태그는 꼭 닫혀야 합니다. `<input />`, `<br />` 등의 태그는 꼭 self-closing 되도록 작성해주세요.
+- 두 개 이상의 요소는 꼭 하나의 요소로 묶여야합니다.`<div> .. </div>`로 감싸고 싶지 않다면, `<> .. </>` (fragment)를 사용해 보세요.
+- JSX 내부에서 JS 값을 사용하려면 `{ .. }` 로 깜싼 뒤, 그 안에 변수나 상수를 넣으세요.
+- inline-style를 지정하고 싶다면, 객체 형태로 만들어 넣어주어야 합니다.
+- `class`를 지정하고 싶다면 `className` 속성을 사용하세요.
+- 주석을 사용하는 올바른 방법은 `{/* .. */}`입니다. 태그 내부에서의 주석은 `// ..` 이렇게 작성할 수 있습니다.
+
+```jsx
+function App() {
+    const name = 'react';
+    const style = {
+      backgroundColor: 'black',  /* camelCase로 작성해야 합니다. */
+      color: 'aqua',
+      fontSize: 24, /* 기본 단위는 px 입니다. */
+      padding: '1rem' /* 단위를 따로 설정하려면, 문자열로 작성해 주세요. */
+    }
+    return (
+      <>
+        {/* 주석 테스트 */} 
+        <Header />
+        <div style={style}>{name}</div>
+        <div 
+          // 주석 테스트
+        >{name}</div>
+      </>
+    )
+}
+```
 
 <br /><br />
 
