@@ -313,7 +313,18 @@ this.state.value = '0' // 옳지 않은 문법;
 <br />
 
 ### useState()
-컴포넌트에서 상태를 관리 할 수 있습니다.
+`useState()` react의 Hook 기능 중 하나입니다. State Hook을 사용하면 클래스 컴포넌트를 작성하지 않아도 state와 같은 특징들을 사용할 수 있습니다.
+`useState()`를 이벤트 핸들러나 다른 곳에서 호출할 수 있습니다. `this.setState()`와 거의 유사하지만 이전 state와 새로운 state를 합치지 않는다는 차이점이 있습니다.
+`useState()`은 배열을 반환합니다.
+
+```jsx
+import React, { useState } from 'react';
+
+function Example() {
+  // ...
+}
+```
+`useState()`는 함수 컴포넌트 내부에서 사용할 수 있습니다.
 
 ```jsx
 const [원소1, 원소2] = useState(기본값);
@@ -333,88 +344,55 @@ const 원소2 = array[1];
 
 <br />
 
-#### 예제
-`+1`과 `-1` 두 버튼에 따라 기본값 `0`이 동적으로 바뀌는 예제입니다. 아래의 코드는 `useState()`을 사용하지 않은 코드입니다.
-
-```jsx
-// App.js
-function App() {
-  return (
-    <Counter></Counter>
-  );
-}
-```
-```jsx
-// Counter.js
-function Counter() {
-  const onIncrease = () => {
-    console.log('+1');
-  }
-  const onDecrease = () => {
-    console.log('-1');
-  }
-  return (
-    <div>
-      <h1>0</h1>
-      <button onClick={onIncrease}>+1</button>
-      <button onClick={onDecrease}>-1</button>
-    </div>
-  );
-}
-```
-`Counter()`에 이벤트를 등록합니다. 위의 예제에서 버튼을 누르면 동적인 변화를 나타내기 위해서 `useState()`를 사용합니다. `useState()`를 사용하기 위해서, 아래와 같은 과정을 거칩니다.
-
-```jsx
-import React, { useState } from 'react';
-```
-리액트 패키지에서 `useState()`을 불러옵니다.
-
-```jsx
-const [number, setNumber] = useState(0);
-```
-`useState()`을 호출합니다.
-
-Setter 함수는 파라미터로 전달 받은 값을 최신 상태로 설정해줍니다.
-```jsx
-const onIncrease = () => {
-    setNumber(number + 1); /* 컴포넌트 최적화를 위해 함수형 업데이트(callback)를 사용할 수 있습니다. */
-  }
-
-  const onDecrease = () => {
-    setNumber(number - 1); 
-  }
-```
-Setter 함수의 결과를 `{number}`을 통해 보여줍니다.
+### 예제
+같은 결과를 보여주는 코드를 Hook과 Class를 사용하여 비교합니다.
 
 <br />
 
-이제 위의 과정을 거친 코드는 이렇게 됩니다.
-
+#### Hook
 ```jsx
-// Counter.js
 import React, { useState } from 'react';
 
-function Counter() {
-  const [number, setNumber] = useState(0);
-
-  const onIncrease = () => {
-    setNumber(number + 1); 
-  }
-
-  const onDecrease = () => {
-    setNumber(number - 1);
-  }
+function Example() {
+  // 새로운 state 변수를 선언하고, count라 부르겠습니다.
+  const [count, setCount] = useState(0);
 
   return (
     <div>
-      <h1>{number}</h1>
-      <button onClick={onIncrease}>+1</button>
-      <button onClick={onDecrease}>-1</button>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
     </div>
   );
 }
 ```
 
+<br />
+
+#### Class
+```jsx
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        </button>
+      </div>
+    );
+  }
+}
+```
+위 코드에서 state는 `{ count: 0 }`이며 사용자가 `this.setState()`를 호출하는 버튼을 클릭했을 때 `state.count`를 증가시킵니다.
 
 
 
@@ -520,5 +498,7 @@ npx serve -s build
 
 ***
 #### _References_
+[Hook 개요 | React](https://ko.reactjs.org/docs/hooks-overview.html)
+[Using the State Hook | React](https://ko.reactjs.org/docs/hooks-state.html)
 [벨로퍼트와 함께하는 모던 리액트 | velopert](https://react.vlpt.us/) <br />
 [React | 생활코딩]()
