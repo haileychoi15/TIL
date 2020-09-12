@@ -1,4 +1,12 @@
 # React
+- 개발 환경 준비
+- JS, CSS 코딩하는 법
+- Components
+- JSX
+- Props
+- State
+- Lists and Keys
+- 배포하는 법
 
 <br />
 
@@ -13,60 +21,22 @@
 import 'CSS 파일 위치';
 ```
 
-### 컴포넌트 불러오기
-```jsx
-function 컴포넌트명() {
-    return // JSX 구현 .. ;
-}
-```
-
-### 내보내기
-```jsx
-export default 컴포넌트명;
-```
-
-<br />
-
-## 3. 배포하는 법 
-
-### 배포 폴더 생성
-```text
-yarn start
-```
-터미널에 위와 같은 명령어를 입력하면, `build`라는 이름의 디렉토리가 생성됩니다.
-`build` 디렉토리 안에 `index.html`파일 이 있습니다. 이는 실제 프러덕션에서 사용하는 앱을 만들기 위해서 우리가 원래 가지고 있던 
-`public` 디렉토리 안에 `index.html` 파일과 `src` 디렉토리에서 불필요한 부분을 살균시킨 것이라고 생각하면 됩니다. 즉, 실제 서비스는 용량이 작아집니다.
-
-<br />
-
-실제로 서비스를 할 때는 `build` 폴더 안의 파일들을 쓰면 됩니다. 웹 서버가 문서를 찾는 최상위 폴더에 `build` 폴더 안의 파일들을 위치 시키면 됩니다. 그렇다면 이제 실서버 환경이 구축되었습니다.
-
-<br />
-
-### 서버 설치
-
-```text
-npm install -g serve
-```
-위의 명령어를 입력하면 작업하는 PC의 어디에서나 `serve`라는 명령어를 통해서 웹서버를 설치 할 수 있습니다.
-
-```text
-npx serve
-```
-한번만 실행 시킬 웹서버를 다운받아서 실행시킵니다.
-
-```text
-npx serve -s build
-```
-여기서 `-s`는 웹서버를 실행시킬 때 `build` 디렉토리를 `document.root`로 사용하겠다는 의미입니다. 이제 어떤 주소로 접속하면 되는지 사용자에게 알려줄 것입니다.
-주소로 접속하면 개발 환경의 앱보다 용량이 훨씬 가벼워진 것을 확인할 수 있습니다.  
-
 <br /><br />
 
 ## Components
 컴포넌트는 일종의 UI 조각이라고 할 수 있습니다.
 
-### 클래스형
+### Function type
+
+```jsx
+function 컴포넌트명() {
+  return (
+  
+  );
+}
+```
+
+### Class type
 ```jsx
 class 컴포넌트명 extends Component {
   render () {
@@ -101,9 +71,14 @@ class App extends Component {
 </div>
 ```
 
-### Components 분리하기
+<br />
+
 #### How to import `React.Components`
 react 를 사용하기 위한 기본 코드입니다.
+```jsx
+import React from 'react';
+```
+
 ```jsx
 import React, { Component } from 'react';
 ```
@@ -156,11 +131,79 @@ function App() {
 <br /><br />
 
 ## Props
+> properties
+
 ```jsx
-class Welcome extends React.Component {
-  render() {
-    return <h1>Hello, {this.props.name}</h1>;
+// App.js
+function App() { 
+  return (
+    <Hello name="react" color="red">
+  );
+}
+
+// Hello.js
+function Hello(props) { 
+  console.log(props); // {name: "react"}
+  return <div style={{color: props.color}}>hello, {props.name}!</div>
+  /* style 에서 바깥 {  }는 내부에 JS 값을 넣어주기 위한 문법이며, 내부 { }는 객체를 의미합니다. */
+}
+```
+위의 코드를 구조 분해 할당을 사용하려면 더욱 간결해집니다.
+
+```jsx
+// Hello.js
+function Hello({ color, name }) {
+  return <div style={{color}}>hello, {name}!</div>
+}
+```
+
+### defaultProps
+props가 전달 되지 않았을 때 기본적으로 사용할 props을 설정할 수 있습니다. 객체 형태입니다.
+```jsx
+// App.js
+function App() { 
+  return (
+    <>
+      <Hello name="react" color="red">
+      <Hello color="blue"> {/* name 값이 지정되지 않았습니다. */}
+    </>
+  );
+}
+
+// Hello.js
+function Hello({ color, name }) {
+  return <div style={{color}}>hello, {name}!</div>
+}
+
+Hello.defaultProps = {
+  name: 'world'
+};
+```
+
+<br />
+
+###childrenProps
+컴포넌트 내부에서 다른 컴포넌트를 랜더링 하고 싶을 때 사용합니다.
+```jsx
+// App.js
+function App() { 
+  return (
+    <Wrapper>
+      <Hello name="react" color="red"> 
+      <Hello color="blue">
+    </Wrapper>
+  );
+}
+
+// Wrapper.js
+function Wrapper({ children }) {  /* children을 사용해 랜더링하고자하는 컴포넌트를 추출해옵니다. */
+  const style = {
+    border: '2px solid black',
+    padding: 16
   }
+  return (
+    <div style={style}>{children}</div> /* div는 검정 테두리가 있는 상자 형태입니다. */
+  );
 }
 ```
 
@@ -270,3 +313,46 @@ Warning: Each child in a list should have a unique "key" prop.
 lists.push(<li key={data[i].id}>{data[i].title}</li>);
 ```
 위의 코드처럼 list를 자동 생성해주는 코드에 key props를 넣어주면 됩니다.
+
+<br /><br />
+
+## 3. 배포하는 법 
+
+### 배포 폴더 생성
+```text
+yarn start
+```
+터미널에 위와 같은 명령어를 입력하면, `build`라는 이름의 디렉토리가 생성됩니다.
+`build` 디렉토리 안에 `index.html`파일 이 있습니다. 이는 실제 프러덕션에서 사용하는 앱을 만들기 위해서 우리가 원래 가지고 있던 
+`public` 디렉토리 안에 `index.html` 파일과 `src` 디렉토리에서 불필요한 부분을 살균시킨 것이라고 생각하면 됩니다. 즉, 실제 서비스는 용량이 작아집니다.
+
+<br />
+
+실제로 서비스를 할 때는 `build` 폴더 안의 파일들을 쓰면 됩니다. 웹 서버가 문서를 찾는 최상위 폴더에 `build` 폴더 안의 파일들을 위치 시키면 됩니다. 그렇다면 이제 실서버 환경이 구축되었습니다.
+
+<br />
+
+### 서버 설치
+
+```text
+npm install -g serve
+```
+위의 명령어를 입력하면 작업하는 PC의 어디에서나 `serve`라는 명령어를 통해서 웹서버를 설치 할 수 있습니다.
+
+```text
+npx serve
+```
+한번만 실행 시킬 웹서버를 다운받아서 실행시킵니다.
+
+```text
+npx serve -s build
+```
+여기서 `-s`는 웹서버를 실행시킬 때 `build` 디렉토리를 `document.root`로 사용하겠다는 의미입니다. 이제 어떤 주소로 접속하면 되는지 사용자에게 알려줄 것입니다.
+주소로 접속하면 개발 환경의 앱보다 용량이 훨씬 가벼워진 것을 확인할 수 있습니다.  
+
+<br /><br />
+
+***
+#### _References_
+[벨로퍼트와 함께하는 모던 리액트 | velopert](https://react.vlpt.us/) <br />
+[React | 생활코딩]()
