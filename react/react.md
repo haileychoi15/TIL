@@ -143,7 +143,7 @@ function App() {
 
 // Hello.js
 function Hello(props) { 
-  console.log(props); // {name: "react"}
+  console.log(props); /* {name: "react"} */
   return <div style={{color: props.color}}>hello, {props.name}!</div>
   /* style 에서 바깥 {  }는 내부에 JS 값을 넣어주기 위한 문법이며, 내부 { }는 객체를 의미합니다. */
 }
@@ -156,6 +156,7 @@ function Hello({ color, name }) {
   return <div style={{color}}>hello, {name}!</div>
 }
 ```
+<br />
 
 ### defaultProps
 props가 전달 되지 않았을 때 기본적으로 사용할 props을 설정할 수 있습니다. 객체 형태입니다.
@@ -164,8 +165,8 @@ props가 전달 되지 않았을 때 기본적으로 사용할 props을 설정�
 function App() { 
   return (
     <>
-      <Hello name="react" color="red">
-      <Hello color="blue"> {/* name 값이 지정되지 않았습니다. */}
+      <Hello name="react" color="red"></Hello>
+      <Hello color="blue"></Hello> {/* name 값이 지정되지 않았습니다. */}
     </>
   );
 }
@@ -182,15 +183,15 @@ Hello.defaultProps = {
 
 <br />
 
-###childrenProps
+### childrenProps
 컴포넌트 내부에서 다른 컴포넌트를 랜더링 하고 싶을 때 사용합니다.
 ```jsx
 // App.js
 function App() { 
   return (
     <Wrapper>
-      <Hello name="react" color="red"> 
-      <Hello color="blue">
+      <Hello name="react" color="red"></Hello>
+      <Hello color="blue"></Hello>
     </Wrapper>
   );
 }
@@ -206,6 +207,37 @@ function Wrapper({ children }) {  /* children을 사용해 랜더링하고자하
   );
 }
 ```
+여기서 `Wrapper()`의 파라미터로 전달된 children props는 `App()`의 `<Wrapper></Wrapper>` 내부의 `<Hello></Hello>`입니다.
+
+<br />
+
+### 조건부 랜더링
+```jsx
+// App.js
+function App() { 
+  return (
+    <Wrapper>
+      <Hello name="react" color="red" isSpecial={true}></Hello> 
+      {/* true는 JS 값이기 때문에 { }를 사용합니다. 여기서, 값 지정을 생략하면 true로 지정한 것과 같습니다. */}
+    </Wrapper>
+  );
+}
+
+// Hello.js
+function Hello({ color, name, isSpecial }) {
+  return (
+    <div style={{
+      color
+    }}>
+      {isSpecial && <b>***</b>} 
+      {/* AND 연산자를 통해 isSpecial이 false일 때 아무것도 랜더링하지 않습니다. */}
+      {/* {isSpecial ? <b>***</b> : null}와 같은 방법입니다. */}
+      hello, {name}!
+    </div>
+  );
+}
+```
+> JSX에서 기본적으로 `{null}`, `{undefined}`, `{false}`와 같은 falsy한 값들은 랜더링이 되지 않습니다. 그러나 `{0}`은 랜더링됩니다.
 
 <br /><br />
 
