@@ -7,6 +7,7 @@
 - State
 - Lists and Keys
 - DOM
+- Hook
 - 배포하는 법
 
 <br />
@@ -464,6 +465,15 @@ lists.push(<li key={data[i].id}>{data[i].title}</li>);
 ## DOM
 
 ### useref()
+컴포넌트에서 특정 DOM 을 선택해야 할 때 사용합니다. 다른 용도가 한가지 더 있는데요, 바로 컴포넌트 안에서 조회 및 수정 할 수 있는 변수를 관리하는 것 입니다.
+`useref()`로 관리하는 변수는 값은 바뀌어도 컴포넌트가 리랜더링 되지 않습니다. 즉, 변수를 설정 후 바로 조회 할 수 있습니다. <br />
+이 변수를 사용하여 다음과 같은 값을 관리 할 수 있습니다.
+- `setTimeout`, `setInterval`의 id
+- 외부라이브러리를 사용하여 생성된 인스턴스
+- Scroll의 위치
+
+<br />
+
 ```jsx
 import React, { useref } from 'react';
 ```
@@ -472,12 +482,29 @@ import React, { useref } from 'react';
 ```jsx
 const 이름 = useref(); 
 ```
-객체를 생성합니다.
+객체를 생성합니다. 
 
 ```jsx
 ref = {이름}
 ```
-선택하고자 하는 돔(DOM)의 속성으로 설정합니다.
+선택하고자 하는 돔(DOM)의 속성으로 설정합니다. `이름.current`이 해당 돔을 가리킵니다. 
+
+<br /><br />
+
+## Hook
+Hook은 함수 컴포넌트에서 React state와 생명주기 기능(lifecycle features)을 “연동(hook into)“할 수 있게 해주는 함수입니다. 
+> Hook은 class 안에서는 동작하지 않습니다. 대신 class 없이 React를 사용할 수 있게 해주는 것입니다.
+
+- [useState](https://ko.reactjs.org/docs/hooks-reference.html#usestate)
+- [useEffect](https://ko.reactjs.org/docs/hooks-reference.html#useeffect)
+- [useContext](https://ko.reactjs.org/docs/hooks-reference.html#usecontext)
+- [useReducer](https://ko.reactjs.org/docs/hooks-reference.html#usereducer)
+- [useCallback](https://ko.reactjs.org/docs/hooks-reference.html#usecallback)
+- [useMemo](https://ko.reactjs.org/docs/hooks-reference.html#usememo)
+- [useRef](https://ko.reactjs.org/docs/hooks-reference.html#useref)
+- [useImperativeHandle](https://ko.reactjs.org/docs/hooks-reference.html#useimperativehandle)
+- [useLayoutEffect](https://ko.reactjs.org/docs/hooks-reference.html#uselayouteffect)
+- [useDebugValue](https://ko.reactjs.org/docs/hooks-reference.html#usedebugvalue)
 
 <br /><br />
 
@@ -521,5 +548,6 @@ npx serve -s build
 #### _References_
 [Hook 개요 | React](https://ko.reactjs.org/docs/hooks-overview.html)
 [Using the State Hook | React](https://ko.reactjs.org/docs/hooks-state.html)
+[Hooks API Reference | React](https://ko.reactjs.org/docs/hooks-reference.html#usememo)
 [벨로퍼트와 함께하는 모던 리액트 | velopert](https://react.vlpt.us/) <br />
 [React | 생활코딩]()
