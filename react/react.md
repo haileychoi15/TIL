@@ -8,16 +8,17 @@
 - Lists and Keys
 - DOM
 - Hook
+- LifeCycle
 - 배포하는 법
 
 <br />
 
-## 1. 개발 환경 준비
+## 개발 환경 준비
 > `yarn` 을 사용하고 있습니다. `yarn`이 없다면, `npm`을 사용하시면 됩니다. 사용방법은 동일합니다.
 
 <br />
 
-## 2. JS, CSS 코딩하는 법
+## JS, CSS 코딩하는 법
 ### CSS 불러오기
 ```jsx
 import 'CSS 파일 위치';
@@ -508,7 +509,12 @@ Hook은 함수 컴포넌트에서 React state와 생명주기 기능(lifecycle f
 
 <br /><br />
 
-## 3. 배포하는 법 
+## LifeCycle
+<img src="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" alt="">
+
+<br /><br />
+
+## 배포하는 법 
 
 ### 배포 폴더 생성
 ```text
