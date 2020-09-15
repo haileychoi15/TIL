@@ -7,7 +7,6 @@
 - State
 - Lists and Keys
 - DOM
-- Hook
 - LifeCycle
 - 배포하는 법
 
@@ -492,25 +491,8 @@ ref = {이름}
 
 <br /><br />
 
-## Hook
-Hook은 함수 컴포넌트에서 React state와 생명주기 기능(lifecycle features)을 “연동(hook into)“할 수 있게 해주는 함수입니다. 
-> Hook은 class 안에서는 동작하지 않습니다. 대신 class 없이 React를 사용할 수 있게 해주는 것입니다.
-
-- [useState](https://ko.reactjs.org/docs/hooks-reference.html#usestate)
-- [useEffect](https://ko.reactjs.org/docs/hooks-reference.html#useeffect)
-- [useContext](https://ko.reactjs.org/docs/hooks-reference.html#usecontext)
-- [useReducer](https://ko.reactjs.org/docs/hooks-reference.html#usereducer)
-- [useCallback](https://ko.reactjs.org/docs/hooks-reference.html#usecallback)
-- [useMemo](https://ko.reactjs.org/docs/hooks-reference.html#usememo)
-- [useRef](https://ko.reactjs.org/docs/hooks-reference.html#useref)
-- [useImperativeHandle](https://ko.reactjs.org/docs/hooks-reference.html#useimperativehandle)
-- [useLayoutEffect](https://ko.reactjs.org/docs/hooks-reference.html#uselayouteffect)
-- [useDebugValue](https://ko.reactjs.org/docs/hooks-reference.html#usedebugvalue)
-
-<br /><br />
-
 ## LifeCycle
-<img src="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" alt="">
+<img width="1136" alt="lifecycle" src="https://user-images.githubusercontent.com/60546778/93087921-2f94c500-f6d4-11ea-9d59-f4f2453719c8.png">
 
 <br /><br />
 
