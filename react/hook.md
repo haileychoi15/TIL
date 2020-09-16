@@ -191,6 +191,160 @@ context의 현재 값은 트리 안에서 이 Hook을 호출하는 컴포넌트�
 
 <br /><br />
 
+## `useReducer`
+`useState`의 대체 함수입니다. `useReducer`를 사용하면 컴포넌트의 상태 업데이트 로직을 컴포넌트에서 분리시킬 수 있습니다.  
+
+<br />
+
+### 1. reducer 함수
+`reducer` 함수는 현재 상태와 액션 객체를 파라미터로 받아와서 새로운 상태를 반환해주는 함수입니다.
+```jsx
+function reducer(state, action) {
+  // 새로운 상태를 만드는 로직
+  // const nextState = ...
+  return nextState;
+}
+```
+- `state` : 현재 상태
+- `action` : 업데이트를 위한 정보를 가지고 있는 객체
+    - 주로 `type` 값을 지닌 객체 형태로 사용합니다.
+    - `type` 값은 대문자와 `_` 로 구성하는 관습이 있습니다. (예 : `'CHANGE_INPUT'`)
+- `nextState` : 컴포넌트가 지닐 새로운 상태
+
+<br />
+
+### 2. useReducer
+```jsx
+const [state, dispatch] = useReducer(reducer, initialState, init);
+```
+- `state` : 현재 상태
+- `dispatch` : 액션을 발생시키는 함수 (예 : `dispatch({ type: 'INCREMENT' })`)
+- `reducer` : `reducer` 함수
+- `initialState` : 초기 상태
+- `init`(optional) : 초기화 지연 함수
+
+<br />
+
+### 3. 예제
+```jsx
+import React, { useReducer } from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [number, dispatch] = useReducer(reducer, 0);
+
+  const onIncrease = () => {
+    dispatch({ type: 'INCREMENT' });
+  };
+
+  const onDecrease = () => {
+    dispatch({ type: 'DECREMENT' });
+  };
+
+  return (
+    <div>
+      <h1>{number}</h1>
+      <button onClick={onIncrease}>+1</button>
+      <button onClick={onDecrease}>-1</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+<br /><br />
+
+## `useMemo`
+`useMemo`는 의존성 값(`deps`)이 변경되었을 때에만 메모이제이션된 값만 다시 계산 할 것입니다. 이 최적화는 모든 렌더링 시의 고비용 계산을 방지하게 해 줍니다.
+> `useMemo`로 전달된 함수는 렌더링 중에 실행됩니다. 랜더링 이후 특정 작업을 실행하려면 `useEffect`를 사용하세요.
+
+```jsx
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+```
+- [메모이제이션](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98) 된 값을 반환합니다.
+- 함수 안에서 참조되는 모든 값(여기서는 `a`,`b`)은 의존성 값의 배열(`deps`)에 나타나야 합니다. 
+- 배열이 없는 경우 매 렌더링 때마다 새 값을 계산합니다.
+
+<br /><br />
+
+## `useCallback`
+`useMemo`는 특정 결과값을 재사용 할 때 사용하는 반면, `useCallback` 은 특정 함수를 새로 만들지 않고 재사용하고 싶을때 사용합니다.
+
+> `useCallback(fn, deps)`은 `useMemo(() => fn, deps)`와 같습니다.
+
+```jsx
+const memoizedCallback = useCallback(
+  () => {
+    doSomething(a, b);
+  },
+  [a, b],
+);
+```
+- [메모이제이션](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98) 된 콜백을 반환합니다.
+- 함수 안에서 참조되는 모든 값(여기서는 `a`,`b`)은 의존성 값의 배열(`deps`)에 나타나야 합니다. 
+
+<br /><br />
+
+## `useRef`
+컴포넌트에서 특정 DOM 을 선택해야 할 때, 컴포넌트 안에서 조회 및 수정 할 수 있는 변수를 관리할 때 사용합니다.
+
+<br />
+
+### 특정 DOM 선택
+- 특정 엘리먼트의 크기
+- `scroll` 위치
+- 특정 엘리먼트 포커스 설정
+- 외부 라이브러리의 기능을 특정 DOM 에다 적용
+
+```jsx
+function example() {
+  const targetInput = useRef();
+  const onFocus = () => {
+    targetInput.current.focus();
+  }
+  return (
+    <div>
+      <input onFocus={onFocus} ref={targetInput} />
+    </div>
+  );
+}
+```
+`useRef`를 사용하여 Ref 객체를 만들고, 이 객체를 우리가 선택하고 싶은 DOM 에 `ref` 값으로 설정해주어야 합니다. 
+그러면, Ref 객체의 `.current` 값은 우리가 원하는 DOM 을 가르키게 됩니다.
+
+<br />
+
+### 변수 관리
+`useRef`로 관리하는 변수는 값이 바뀐다고 해서 컴포넌트가 리렌더링되지 않습니다. 
+리액트 컴포넌트에서의 상태는 상태를 바꾸는 함수를 호출하고 나서 그 다음 렌더링 이후로 업데이트 된 상태를 조회 할 수 있는 반면, 
+`useRef`로 관리하고 있는 변수는 설정 후 바로 조회 할 수 있습니다.
+
+- `setTimeout`, `setInterval` 을 통해서 만들어진 `id`
+- 외부 라이브러리를 사용하여 생성된 인스턴스
+- `scroll` 위치   
+
+```jsx
+const nextId = useRef(4);
+  const onCreate = () => {
+    // ...
+    nextId.current += 1; // 값이 변하여도, 리렌더링되지 않습니다.
+  };
+```
+`useRef`를 사용 할 때 파라미터(여기서는 `4`)를 넣어주면, 이 값이 Ref 객체(여기서는 `nextId`)의 `.current` 값의 기본값이 됩니다. 값을 수정하거나 조회할 때는, Ref 객체의 `.current`를 사용합니다.
+
+<br /><br />
+
 ***
 #### _References_
 [Hook 개요 | React](https://ko.reactjs.org/docs/hooks-overview.html) <br />
