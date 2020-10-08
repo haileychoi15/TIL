@@ -26,6 +26,7 @@
 ## React
 - [Hook](https://github.com/haileychoi15/TIL/blob/master/react/hook.md)
 - [react](https://github.com/haileychoi15/TIL/blob/master/react/react.md)
+- [error](https://github.com/haileychoi15/TIL/blob/master/react/error.md)
 
 <br />
 

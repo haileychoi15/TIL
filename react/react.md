@@ -8,6 +8,7 @@
 - Lists and Keys
 - DOM
 - LifeCycle
+- 명령어
 - 배포하는 법
 
 <br />
@@ -529,6 +530,16 @@ npx serve -s build
 ```
 여기서 `-s`는 웹서버를 실행시킬 때 `build` 디렉토리를 `document.root`로 사용하겠다는 의미입니다. 이제 어떤 주소로 접속하면 되는지 사용자에게 알려줄 것입니다.
 주소로 접속하면 개발 환경의 앱보다 용량이 훨씬 가벼워진 것을 확인할 수 있습니다.  
+
+<br /><br />
+
+## 명령어 
+### react-icons
+
+```jsx
+import { 아이콘이름 } from 'react-icons/md';
+```
+아이콘은 컴포넌트 형태로 사용할 수 있습니다.
 
 <br /><br />
 
