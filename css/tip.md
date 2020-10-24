@@ -3,3 +3,4 @@
 <br />
 
 - [Open Color](https://yeun.github.io/open-color/)
+- [Color Palette Generator](https://www.degraeve.com/color-palette/)
