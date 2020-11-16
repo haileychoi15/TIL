@@ -188,6 +188,7 @@ context의 현재 값은 트리 안에서 이 Hook을 호출하는 컴포넌트�
 
 - `useContext`로 전달한 인자는 context 객체 그 자체여야 합니다. (예 : `useContext(UserDispatch.id)`처럼 사용할 수 없습니다.)
 - `useContext`를 호출한 컴포넌트는 context 값이 변경되면 항상 리렌더링 됩니다.
+- [하위 컴퍼넌트에서 `context` 값 변경하기](https://dev.to/efearas/how-to-usecontext-and-set-value-of-context-in-child-components-in-3-steps-3j9h)
 
 <br /><br />
 
